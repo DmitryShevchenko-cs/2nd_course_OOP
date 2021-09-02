@@ -1,18 +1,16 @@
 #include "Tabl.h"
 
-void table::set(char* a, char b, int c, unsigned int d) {
-	strcpy(name, a);
+void table::set(string a, char b, int c, unsigned int d) {
+	name = a;
 	type = b;
 	temperature = c;
 	speed = d;
 
 }
 
-void table::get(char* a, char& b, int& c, unsigned int& d) {
-	delete[] a;
-	a = new char[strlen(name) + 1];
+void table::get(string &a, char& b, int& c, unsigned int& d) {
 
-	strcpy(a, name);
+	a = name;
 	b = type;
 	c = temperature;
 	d = speed;
@@ -21,7 +19,7 @@ void table::get(char* a, char& b, int& c, unsigned int& d) {
 
 void table::show(void) {
 	cout << name << " ";
-	cout << type << "	";
+	cout << type << " ";
 	cout << temperature << " ";
 	cout << speed << " ";
 }

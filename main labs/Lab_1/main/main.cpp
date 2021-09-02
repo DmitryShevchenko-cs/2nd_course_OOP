@@ -4,7 +4,7 @@ void main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
-	char* n;
+	string n;
 	char t;
 	int tem;
 	unsigned int sp;
@@ -21,13 +21,22 @@ void main() {
 		obj[i].set(n, t, tem, sp);
 	}
 
-	cout << "Работа функции SHOW!\n";
+	cout << "\n\n\nРабота функции SHOW!\n";
 	cout << "Вещество, Тип , Температура , Скорость: \n";
 	for (int i = 0; i < N; i++)
 	{
 		obj[i].show();
 		cout << "\n";
 	}
+
+	cout << "\n\nРабота функции GET и SHOW!\n";
+	cout << "Вещество, Тип , Температура , Скорость: \n";
+	for (int i = 0; i < N; i++)
+	{
+		obj[i].get(n, t, tem, sp);
+		obj[i].show();
+		cout << "\n";
+	}
 	_getch();
-	delete[] n;
+	
 }

@@ -9,13 +9,13 @@
 using namespace std;
 
 class table {
-	char* name;
+	string name;
 	char type;
 	int temperature;
 	unsigned int speed;
 public:
-	void set(char* a, char b, int c, unsigned int d);
-	void get(char* a, char &b, int &c, unsigned int&d);
+	void set(string a, char b, int c, unsigned int d);
+	void get(string &a, char &b, int &c, unsigned int&d);
 	void show(void);
 };
 
