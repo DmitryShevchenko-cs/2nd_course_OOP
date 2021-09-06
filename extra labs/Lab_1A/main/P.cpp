@@ -10,7 +10,3 @@ void point::show() {
 	cout << "y = " << y << endl;
 	cout << "x + y = " << x + y << endl;
 }
-
-point::~point() {
-	cout << "Вызвался деструктор" << endl;
-}

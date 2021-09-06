@@ -12,6 +12,4 @@ public:
 	point(const point& ob) : x(ob.x), y(ob.y) {};
 	void set(int a, int b);
 	void show();
-
-	~point();
 };
