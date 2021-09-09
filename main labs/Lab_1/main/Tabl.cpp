@@ -8,7 +8,7 @@ void table::set(const string n, const char t, const int tem, const unsigned int 
 
 }
 
-void table::get(string &a, char& b, int& c, unsigned int& d) {
+void table::get(string &a, char& b, int& c, unsigned int& d)const {
 
 	a = name;
 	b = type;
@@ -17,7 +17,7 @@ void table::get(string &a, char& b, int& c, unsigned int& d) {
 
 }
 
-void table::show(void)const {
+void table::show()const {
 	cout << name << " ";
 	cout << type << " ";
 	cout << temperature << " ";

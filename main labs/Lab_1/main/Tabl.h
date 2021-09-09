@@ -15,7 +15,7 @@ class table {
 	unsigned int speed;
 public:
 	void set(const string n, const char t, const int tem, const unsigned int sp);
-	void get(string &a, char &b, int &c, unsigned int&d);
+	void get(string &a, char &b, int &c, unsigned int&d)const;
 	void show(void)const;
 };
 
