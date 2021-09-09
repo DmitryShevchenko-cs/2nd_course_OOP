@@ -14,9 +14,9 @@ class table {
 	int temperature;
 	unsigned int speed;
 public:
-	void set(string a, char b, int c, unsigned int d);
+	void set(const string n, const char t, const int tem, const unsigned int sp);
 	void get(string &a, char &b, int &c, unsigned int&d);
-	void show(void);
+	void show(void)const;
 };
 
 

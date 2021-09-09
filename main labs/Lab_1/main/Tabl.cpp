@@ -1,10 +1,10 @@
 #include "Tabl.h"
 
-void table::set(string a, char b, int c, unsigned int d) {
-	name = a;
-	type = b;
-	temperature = c;
-	speed = d;
+void table::set(const string n, const char t, const int tem, const unsigned int sp) {
+	this->name = n;
+	this->type = t;
+	this->temperature = tem;
+	this->speed = sp;
 
 }
 
@@ -17,7 +17,7 @@ void table::get(string &a, char& b, int& c, unsigned int& d) {
 
 }
 
-void table::show(void) {
+void table::show(void)const {
 	cout << name << " ";
 	cout << type << " ";
 	cout << temperature << " ";

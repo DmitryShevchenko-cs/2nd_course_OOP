@@ -10,6 +10,8 @@ void main() {
 	unsigned int sp;
 
 	table obj[N];
+
+	
 	cout << "Работа функции SET!\n";
 	for (int i = 0; i < N; i++)
 	{
@@ -37,6 +39,8 @@ void main() {
 		obj[i].show();
 		cout << "\n";
 	}
+
+	
 	_getch();
 	
 }
