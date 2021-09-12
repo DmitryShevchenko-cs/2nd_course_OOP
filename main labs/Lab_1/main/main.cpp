@@ -31,12 +31,16 @@ void main() {
 		cout << "\n";
 	}
 
-	cout << "\n\nРабота функции GET и SHOW!\n";
+	cout << "\n\nРабота функции GET!\n";
 	cout << "Вещество, Тип , Температура , Скорость: \n";
 	for (int i = 0; i < N; i++)
 	{
 		obj[i].get(n, t, tem, sp);
-		obj[i].show();
+		//obj[i].show();
+		cout << n << " ";
+		cout << t << " ";
+		cout << tem << " ";
+		cout << sp << " ";
 		cout << "\n";
 	}
 
