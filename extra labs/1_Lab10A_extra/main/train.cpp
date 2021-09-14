@@ -9,7 +9,8 @@ void train::set(const std::string n, const int num, const double t){
 void train::show()const {
 	std::cout << this->name << " ";
 	std::cout << this->number << " ";
-	std::cout << this->time << " ";			//cout with 0.1(0)
+	printf("%.2lf ", this->time);
+	//std::cout << this->time << " ";
 	std::cout << std::endl << std::endl;
 }
 
@@ -22,7 +23,8 @@ int train::search(train* TR)const {
 		if (TR[i].number == user_num) {
 			std::cout << TR[i].name << " ";
 			std::cout << TR[i].number << " ";
-			std::cout << TR[i].time << " ";
+			printf("%.2lf ", TR[i].time);
+			//std::cout << TR[i].time << " ";
 			return 1;
 		}
 		
@@ -65,19 +67,13 @@ void train::sort_destination(train* TR) {
 			}
 			if (TR[j].name == TR[j - 1].name) {
 
-				for (int i = 0; i < S - 1; i++) 
-				{
-					for (int j = S - 1; j > i; j--)
+					if (TR[j].time < TR[j - 1].time)
 					{
-						if (TR[j].time < TR[j - 1].time)
-						{
-							temp = TR[j - 1].time;
-							std::swap(TR[j - 1], TR[j]);
-							TR[j].time = temp;
-						}
-					}
-				}
-
+						temp = TR[j - 1].time;
+						std::swap(TR[j - 1], TR[j]);
+						TR[j].time = temp;
+					}		
+			
 			}
 		}
 	}

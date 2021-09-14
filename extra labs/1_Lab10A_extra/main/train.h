@@ -4,7 +4,7 @@
 #include <iostream>
 #include "windows.h"
 #include <conio.h>
-#define S 4
+#define S 5
 
 //using namespace std;
 
