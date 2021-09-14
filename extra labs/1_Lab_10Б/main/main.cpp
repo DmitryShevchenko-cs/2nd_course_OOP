@@ -9,7 +9,7 @@ int main() {
 	for (int i = 0; i < S; i++) {
 		cout << *(a + i)<<"\t";
 	}
-	cout << endl;
+	cout << endl << endl;
 
 	Swap sw;
 	sw.swap_pointer(a);

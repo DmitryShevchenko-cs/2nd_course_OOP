@@ -1,7 +1,7 @@
 #include "swap.h"
 
 
-void Swap::swap_ref(int*& a) {
+void Swap::swap_ref(int(*a)) {
 
 	int max = *a, maxi = 0, min = *a, mini = 0;
 	int change;

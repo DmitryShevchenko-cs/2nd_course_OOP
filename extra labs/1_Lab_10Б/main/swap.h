@@ -8,7 +8,7 @@ class Swap {
 	
 public:
 
-	void swap_ref(int*& a);
+	void swap_ref(int(*a));
 	void swap_pointer(int* a);
 
 };
