@@ -19,7 +19,7 @@ int main() {
 	cout << endl;
 	
 	Swap s;
-	s.swap_ref();
+	s.swap_ref(a);
 	for (int i = 0; i < S; i++) {
 		cout << *(a + i) << "\t";
 	}

@@ -17,7 +17,7 @@ int main() {
 	cout << endl;
 	a.print();
 	aa->print();
-	//a.NUL();
+
 
 	cout << "-------------------------" << endl;
 	cout << endl;
@@ -30,7 +30,7 @@ int main() {
 	cout << endl;
 	b.print();
 	bb->print();
-	//b.NUL();
+
 
 	cout << "-------------------------" << endl;
 	cout << endl;

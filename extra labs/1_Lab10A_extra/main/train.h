@@ -18,7 +18,7 @@ public:
 
 	void set(const std::string n, const int num, const double t);
 	void sort_num(train* TR);
-	void search(train* TR, int const UserNum)const;
+	int search(train* TR)const;
 	void sort_destination(train* TR);
 	void show()const;
 };

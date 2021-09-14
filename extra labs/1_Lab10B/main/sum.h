@@ -23,8 +23,6 @@ public:
     void set(int a, int b);
     void print();
     void sum();
-    void NUL();
-
 
 };
 
