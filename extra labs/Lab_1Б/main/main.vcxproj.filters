@@ -18,12 +18,12 @@
     <ClCompile Include="main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Fig.cpp">
+    <ClCompile Include="Figure.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Fig.h">
+    <ClInclude Include="Figure.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,9 +6,9 @@
 using namespace std;
 
 class Figure {
-	int p;
-	double S;
+	int a, b, c, r;
 public:
-	void countReg(int a, int b, int c);
-	void countSq(int r);
+	Figure();
+	double countReg()const;
+	double countSq()const;
 };
