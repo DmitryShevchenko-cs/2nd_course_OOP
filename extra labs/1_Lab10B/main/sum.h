@@ -4,10 +4,10 @@
 
 #define  _CRT_SECURE_NO_WARNINGS
 #include <iostream>
-#include "windows.h"
-#include <time.h>
-#include <conio.h>
-#include <malloc.h>
+//#include "windows.h"
+//#include <time.h>
+//#include <conio.h>
+//#include <malloc.h>
 
 using namespace std;
 

@@ -1,16 +1,16 @@
 #include "timer.h"
 
-Timer::Timer(const int sec) {
+Timer::Timer(const int& sec) {
 	seconds = sec;
 }
 
-Timer::Timer(const int min, const int sec) {
+Timer::Timer(const int& min, const int& sec) {
 
 	seconds = (min * 60) + sec;
 
 }
 
-Timer::Timer(Timer& ob) {
+Timer::Timer(const Timer& ob) {
 
 	seconds = ob.seconds;
 }

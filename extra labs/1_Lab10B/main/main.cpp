@@ -1,8 +1,9 @@
 ﻿#include "sum.h"
 
 int main() {
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	//SetConsoleCP(1251);
+	//SetConsoleOutputCP(1251);
+	setlocale(LC_ALL, "RU");
 
 	SUM a, b(5, 7), c;
 	SUM* aa, * bb, * cc;
