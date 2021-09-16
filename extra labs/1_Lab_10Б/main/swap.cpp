@@ -1,54 +1,30 @@
 #include "swap.h"
 
+void swap_pointer(int* a, int* b, int* c) {
+	int* max = a;
+	int* min = c;
 
-void Swap::swap_ref(int(*a)) {
-
-	int max = *a, maxi = 0, min = *a, mini = 0;
-	int change;
-
-	for (int i = 0; i < 3; i++) {
-		if (*(a + i) > max) {
-			max = *(a + i);
-			maxi = i;
-
-		}
-
-	}
-	for (int i = 0; i < 3; i++) {
-		if (min > *(a + i) && *(a + i) >= 0) {
-			min = *(a + i);
-			mini = i;
-		}
-
-	}
-
-	change = *(a + maxi);
-	*(a + maxi) = *(a + mini);
-	*(a + mini) = change;
+	if (*max < *b) max = b;
+		
+	if (*max < *c) max = c;
+	
+	if (*min > *b) min = b;
+	
+	if (*min > *a) min = a;
+	
+	swap(*max, *min);
 }
-void Swap::swap_pointer(int* a) {
+void swap_link(int& a, int& b, int& c) {
+	int* max = &a;
+	int* min = &c;
 
-	int max = *a, maxi = 0, min = *a, mini = 0;
-	int change;
+	if (*max < b) max = &b;
 
-	for (int i = 0; i < 3; i++) {
-		if (*(a + i) > max) {
-			max = *(a + i);
-			maxi = i;
+	if (*max < c) max = &c;
 
-		}
-			
-	}
-	for (int i = 0; i < 3; i++) {
-		if (min > *(a + i) && *(a + i) >= 0) {
-			min = *(a + i);
-			mini = i;
-		}
-			
-	}
+	if (*min > b) min = &b;
 
-	change = *(a + maxi);
-	*(a + maxi) = *(a + mini);
-	*(a + mini) = change;
+	if (*min > a) min = &a;
 
+	swap(*max, *min);
 }

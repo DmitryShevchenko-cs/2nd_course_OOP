@@ -1,30 +1,16 @@
 ﻿#include "swap.h"
 
 int main() {
-	int a[S]{};
-	for (int i = 0; i < S; i++) {
-		cin >> *(a + i);
-	}
+	setlocale(LC_ALL, "rus");
 
-	for (int i = 0; i < S; i++) {
-		cout << *(a + i)<<"\t";
-	}
-	cout << endl << endl;
-
-	Swap sw;
-	sw.swap_pointer(a);
-	for (int i = 0; i < S; i++) {
-		cout << *(a + i) << "\t";
-	}
-	cout << endl;
-	
-	Swap s;
-	s.swap_ref(a);
-	for (int i = 0; i < S; i++) {
-		cout << *(a + i) << "\t";
-	}
-	cout << endl;
-
-
+	int a, b, c;
+	cout << "введите три числа" << endl;
+	cin >> a >> b >> c;
+	swap_pointer(&a, &b, &c);
+	cout << a << b << c << endl;
+	cout << "----------"<< endl;
+	cin >> a >> b >> c;
+	swap_link(a, b, c);
+	cout << a << b << c << endl;
 	return 0;
 }
