@@ -1,13 +1,6 @@
 ﻿#include "Figure.h"
 
-
-Figure::Figure() {
-	a = 4;
-	b = 4;
-	c = 4;
-	r = 4;
-}
-double Figure::countReg()const {
+double Figure::countTr()const {
 
 	double p = (a + b + c) / 2;
 	double S;
