@@ -1,10 +1,9 @@
 ﻿#include "square.h"
 
 int main() {
-
-	square Qw;
-	Qw.count();
-	Qw.show();
+	// input only >0
+	cout << count(5) << endl;
+	cout << count(5, 2) << endl;
 
 	return 0;
 }

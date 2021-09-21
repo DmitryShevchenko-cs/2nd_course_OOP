@@ -5,12 +5,4 @@
 
 using namespace std;
 
-class square {
-	int a;
-	int b, c;
-	int S1, S2;
-public:
-	square();
-	void count();
-	void show()const;
-};
+int count(int a, int b=-1);
