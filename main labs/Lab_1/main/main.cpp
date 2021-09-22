@@ -30,6 +30,16 @@ void main() {
 		obj[i].show();
 		cout << "\n";
 	}
+	cout << "\n\n\nРабота функции NuLL!\n";
+	cout << "Вещество, Тип , Температура , Скорость: \n";
+	for (int i = 0; i < N; i++) {
+		obj[i].NuLL(n, t, tem, sp);
+		cout << n << " ";
+		cout << t << " ";
+		cout << tem << " ";
+		cout << sp << " ";
+		cout << "\n";
+	}
 
 	cout << "\n\nРабота функции GET!\n";
 	cout << "Вещество, Тип , Температура , Скорость: \n";
@@ -43,8 +53,6 @@ void main() {
 		cout << sp << " ";
 		cout << "\n";
 	}
-
-	
 	_getch();
 	
 }

@@ -23,3 +23,12 @@ void table::show()const {
 	cout << temperature << " ";
 	cout << speed << " ";
 }
+
+void table::NuLL(string& name, char& type, int& tem, unsigned int& speed)const {
+
+	name = "";
+	type = 0;
+	tem = 0;
+	speed = 0;
+
+}
