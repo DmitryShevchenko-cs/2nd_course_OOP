@@ -137,10 +137,6 @@ void linebuild(void) {
 	cout << "\n|---------------------------------------------|\n";
 }
 
-int overload::operator() () {
-	int size = 0;
-	while (name++) {
-		size++;
-	}
-	return size--;
+int overload::operator[] (int i) {
+	return strlen(name);
 }

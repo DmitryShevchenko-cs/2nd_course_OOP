@@ -31,7 +31,7 @@ public:
 	void operator == (const overload &other);
 	overload operator + (const overload& other);
 	overload operator = (const overload& other);
-	int operator ()();
+	int operator[] (int i);
 };
 
 void shapka();

@@ -91,7 +91,8 @@ int main()
 	cout << "\nПерегрузка оператора потокового вывода '()'.";
 
 	for (int i = 0; i < N; i++) {
-		cout << obj[i] () << endl;
+		obj[i].show();
+		cout << endl << obj[i].operator[] (i) << endl;
 	}
 
 }
