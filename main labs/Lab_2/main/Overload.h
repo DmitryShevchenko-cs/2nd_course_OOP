@@ -15,12 +15,13 @@ class overload {
 	string type;
 	int temperature;
 	unsigned int speed;
+
 	friend void shapka();
 	friend void linebuild();
 	friend int isvalid(int a, int b);
 	friend istream& operator>>(istream& stream, overload& other);
 	friend ostream& operator<<(ostream& stream, overload & o1);
-
+	
 public:
 	overload();
 	overload(const char* name, string type, int temperature, unsigned int speed);
@@ -30,6 +31,7 @@ public:
 	void operator == (const overload &other);
 	overload operator + (const overload& other);
 	overload operator = (const overload& other);
+	int operator ()();
 };
 
 void shapka();

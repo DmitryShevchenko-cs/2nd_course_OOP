@@ -113,7 +113,7 @@ ostream& operator<<(ostream& stream, overload& other) {
 }
 
 istream& operator>>(istream& stream, overload& other) {
-	cout << "Название, Школа, Количество монахов, Площадь земли: \n";
+	cout << "Вещество, Тип , Температура , Скорость: \n";
 	stream >> other.name;
 	stream >> other.type;
 	stream >> other.temperature;
@@ -135,4 +135,12 @@ void shapka(void)
 void linebuild(void) {
 
 	cout << "\n|---------------------------------------------|\n";
+}
+
+int overload::operator() () {
+	int size = 0;
+	while (name++) {
+		size++;
+	}
+	return size--;
 }

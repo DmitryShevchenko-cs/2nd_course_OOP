@@ -10,7 +10,7 @@ int main()
 	int tem;
 	unsigned int sp;
 	int num1, num2;
-	
+
 	n = new char[10];
 	overload obj[N]{
 			overload("Анилин", "Ч", 20, 1656),
@@ -66,12 +66,14 @@ int main()
 		cin >> num2;
 		if (isvalid(num1, num2) != 0);
 		else {
-			obj[num1] + obj[num2];
+			Temp=obj[num1] + obj[num2];
+			cout << "Вещество, Тип , Температура , Скорость: \n";
+			Temp.get(n, t, tem, sp);
 			break;
 		}
 	}
-	cout << "Вещество, Тип , Температура , Скорость: \n";
-	Temp.get(n, t, tem, sp);
+	
+	
 
 	//////////////////////////////
 	cout << "\nПерегрузка оператора потокового ввода '>>'.";
@@ -85,7 +87,12 @@ int main()
 	cin >> num1;
 	if ((num1 > N - 1) || (num1 < 0)) { cout << "Ошибка! Экземпляра с таким индексом не существует."; _getch(); exit(-1); }
 	cout << obj[num1];
+	//////////////////
+	cout << "\nПерегрузка оператора потокового вывода '()'.";
 
+	for (int i = 0; i < N; i++) {
+		cout << obj[i] () << endl;
+	}
 
 }
 
