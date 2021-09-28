@@ -32,6 +32,7 @@ public:
 	overload operator + (const overload& other);
 	overload operator = (const overload& other);
 	int operator[] (int i);
+	void operator() ();
 };
 
 void shapka();

@@ -44,6 +44,7 @@ void overload::show()const {
 	cout << type << " ";
 	cout << temperature << " ";
 	cout << speed << " ";
+	cout << endl;
 }
 
 void  overload::operator == (const overload& other) {
@@ -139,4 +140,13 @@ void linebuild(void) {
 
 int overload::operator[] (int i) {
 	return strlen(name);
+}
+
+void overload::operator() () {
+
+	cin >> name;
+	cin >> type;
+	cin >> temperature;
+	cin >> speed;
+
 }

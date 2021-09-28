@@ -94,6 +94,11 @@ int main()
 		obj[i].show();
 		cout << endl << obj[i].operator[] (i) << endl;
 	}
+	cout << "Ввод (Вещество, Тип , Температура , Скорость)" << endl;
+	for (int i = 0; i < N; i++)
+		obj[i]();
+	for (int i = 0; i < N; i++)
+		obj[i].show();
 
 }
 
