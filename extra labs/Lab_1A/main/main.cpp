@@ -29,10 +29,19 @@ int main() {
 	point_3.show(sum, prod);
 	cout << endl;
 
-	point point_4(point_2);
-	cout << "Конструктор копирования:" << endl;
-	point_4.count(sum, prod);
+	point point_4; //pointer
+	cout << "Функция инициализации переменных х и у:" << endl;
+	cout << "Введите два числа:";
+	cin >> a >> b;
+	point_4.set(a, b);
+	point_4.count(&sum, &prod);
 	point_4.show(sum, prod);
+	cout << endl;
+
+	point point_5(point_2);
+	cout << "Конструктор копирования:" << endl;
+	point_5.count(sum, prod);
+	point_5.show(sum, prod);
 	cout << endl;
 
 

@@ -4,6 +4,11 @@ void point::set(int a, int b) {
 	x = a;
 	y = b;
 }
+void point::count(int* sum, int* prod)const {
+	*sum = x + y;
+	*prod = x * y;
+
+}
 void point::count(int& sum, int& prod)const {
 	sum = x + y;
 	prod = x * y;

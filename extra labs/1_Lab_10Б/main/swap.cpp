@@ -1,6 +1,6 @@
 #include "swap.h"
 
-void swap_pointer(int* a, int* b, int* c) {
+void swap(int* a, int* b, int* c) {
 	int* max = a;
 	int* min = c;
 
@@ -14,7 +14,7 @@ void swap_pointer(int* a, int* b, int* c) {
 	
 	swap(*max, *min);
 }
-void swap_link(int& a, int& b, int& c) {
+void swap(int& a, int& b, int& c) {
 	int* max = &a;
 	int* min = &c;
 

@@ -11,6 +11,7 @@ public:
 	point(int a, int b) : x(a), y(b) {};
 	point(const point& ob) : x(ob.x), y(ob.y) {};
 	void set(int a, int b);
+	void count(int* sum, int* prod)const;
 	void count(int& sum, int& prod)const;
 	void show(int sum, int prod)const;
 };

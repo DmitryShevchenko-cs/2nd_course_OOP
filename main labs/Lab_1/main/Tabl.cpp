@@ -25,7 +25,6 @@ void table::show()const {
 }
 
 void table::NuLL(string& name, char& type, int& tem, unsigned int& speed)const {
-
 	name = "";
 	type = 0;
 	tem = 0;

@@ -4,6 +4,8 @@ void main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
 
+	setlocale(LC_ALL, "ru");
+
 	string n;
 	char t;
 	int tem;
@@ -53,6 +55,5 @@ void main() {
 		cout << sp << " ";
 		cout << "\n";
 	}
-	_getch();
 	
 }
