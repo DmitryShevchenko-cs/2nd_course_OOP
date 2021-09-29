@@ -12,7 +12,7 @@ using namespace std;
 
 class overload {
 	char* name;
-	string type;
+	char type;
 	int temperature;
 	unsigned int speed;
 
@@ -24,9 +24,9 @@ class overload {
 	
 public:
 	overload();
-	overload(const char* name, string type, int temperature, unsigned int speed);
-	void set(char* n, const string t, const int tem, const unsigned int sp);
-	void get(char* a, string& b, int& c, unsigned int& d)const;
+	overload(const char* name, char type, int temperature, unsigned int speed);
+	void set(char* n, const char t, const int tem, const unsigned int sp);
+	void get(char* a, char& b, int& c, unsigned int& d)const;
 	void show()const;
 	void operator == (const overload &other);
 	overload operator + (const overload& other);

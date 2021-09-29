@@ -6,16 +6,16 @@ int main()
 	SetConsoleOutputCP(1251);
 
 	char* n;
-	string t;
+	char t;
 	int tem;
 	unsigned int sp;
 	int num1, num2;
 
 	n = new char[10];
 	overload obj[N]{
-			overload("Анилин", "Ч", 20, 1656),
-			overload("Ртуть", "Ч", 20, 1451),
-			overload("Кедровое", "М", 29, 1406),
+			overload("Анилин", 'Ч', 20, 1656),
+			overload("Ртуть", 'Ч', 20, 1451),
+			overload("Кедровое", 'М', 29, 1406),
 	};
 	cout << "Вещество, Тип , Температура , Скорость: \n";
 	for (int i = 0; i < N; i++)

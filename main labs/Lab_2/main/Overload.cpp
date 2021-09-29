@@ -6,7 +6,7 @@ overload::overload() {
 	speed = 0;
 }
 
-overload::overload(const char* name, string type, int temperature, unsigned int speed){
+overload::overload(const char* name, char type, int temperature, unsigned int speed){
 	this->name = new char[strlen(name) + 1];
 	strcpy(this->name, name);
 
@@ -15,7 +15,7 @@ overload::overload(const char* name, string type, int temperature, unsigned int 
 	this->speed = speed;
 }
 
-void overload::set(char* n, const string t, const int tem, const unsigned int sp) {
+void overload::set(char* n, const char t, const int tem, const unsigned int sp) {
 	strcpy(this->name, n);
 	this->type = t;
 	this->temperature = tem;
@@ -23,7 +23,7 @@ void overload::set(char* n, const string t, const int tem, const unsigned int sp
 
 }
 
-void overload::get(char* a, string& b, int& c, unsigned int& d)const {
+void overload::get(char* a, char& b, int& c, unsigned int& d)const {
 	delete[] a;
 	a = new char[strlen(this->name) + 1];
 	strcpy(a, this->name);
@@ -83,7 +83,7 @@ overload overload::operator + (const overload& other) {
 	temp.name = new char(strlen(name) + strlen(other.name) + 2);
 	strcpy(temp.name, name);
 	strcat(temp.name, other.name);
-	temp.type = this->type + other.type;
+	temp.type = '+';
 	temp.temperature = this->temperature + other.temperature;
 	temp.speed = this->speed + other.speed;
 	return temp;
