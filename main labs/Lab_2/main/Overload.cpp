@@ -143,7 +143,7 @@ int overload::operator[] (int i) {
 }
 
 void overload::operator() () {
-
+	cout << "Ввод (Вещество, Тип , Температура , Скорость)" << endl;
 	cin >> name;
 	cin >> type;
 	cin >> temperature;
