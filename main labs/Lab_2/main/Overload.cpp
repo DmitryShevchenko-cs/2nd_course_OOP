@@ -72,7 +72,8 @@ overload overload::operator = (const overload& other) {
 	this->type = other.type;
 	this->temperature = other.temperature;
 	this->speed = other.speed;
-	return other;
+	
+	return *this;
 }
 
 overload overload::operator + (const overload& other) {
