@@ -116,10 +116,7 @@ ostream& operator<<(ostream& stream, overload& other) {
 
 istream& operator>>(istream& stream, overload& other) {
 	cout << "Вещество, Тип , Температура , Скорость: \n";
-	stream >> other.name;
-	stream >> other.type;
-	stream >> other.temperature;
-	stream >> other.speed;
+	stream >> other.name >> other.type >> other.temperature >> other.speed;
 	return stream;
 }
 
