@@ -137,14 +137,20 @@ void linebuild(void) {
 }
 
 int overload::operator[] (int i) {
-	return strlen(name);
+	/*return strlen(name);*/
+	return temperature + i;
 }
 
 void overload::operator() () {
-	cout << "Ввод (Вещество, Тип , Температура , Скорость)" << endl;
+	/*cout << "Ввод (Вещество, Тип , Температура , Скорость)" << endl;
 	cin >> name;
 	cin >> type;
 	cin >> temperature;
-	cin >> speed;
+	cin >> speed;*/
+
+	strcpy(name, "1");
+	type = '1';
+	temperature = 1;
+	speed = 1;
 
 }

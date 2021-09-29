@@ -97,14 +97,20 @@ int main()
 	
 	//////////////////
 	_getch();
-	cout << "\nПерегрузка оператора '()'.";
+	cout << "\nПерегрузка оператора '[]'.";
 
-	for (int i = 0; i < N; i++) {
+	/*for (int i = 0; i < N; i++) {
 		obj[i].show();
 		cout << endl << obj[i].operator[] (i) << endl;
+	}*/
+	
+	for (int i = 0; i < N; i++) {
+		cout << endl << obj[i][2] << endl;
 	}
 
 	//////////////////////////
+
+	cout << "\nПерегрузка оператора '()'.";
 	for (int i = 0; i < N; i++)
 		obj[i]();
 	cout << endl;

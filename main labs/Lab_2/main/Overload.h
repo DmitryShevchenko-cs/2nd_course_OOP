@@ -13,7 +13,7 @@ using namespace std;
 class overload {
 	char* name;
 	char type;
-	int temperature;
+	int temperature;//
 	unsigned int speed;
 
 	friend void shapka();
