@@ -1,0 +1,6 @@
+﻿#include "SOBAkA.h"
+
+int main() {
+
+	return 0;
+}
