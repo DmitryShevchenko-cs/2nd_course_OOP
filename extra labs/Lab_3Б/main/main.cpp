@@ -5,24 +5,12 @@ int main() {
 	SetConsoleOutputCP(1251);
 	string find;
 	Library book[N]{ 
-		Library(1, "Базовый курс С++", "Герберт Шилдт", 610, false),
-		Library(2, "C# для чайников", "Мюллер Джон", 608, true),
-		Library(3, "Head First Java", "Берт Бэйтс", 605, true)
+		Library(1, "Базовый курс С++", "Герберт Шилдт", 0, 1, false),
+		Library(2, "C# для чайников", "Мюллер Джон", 2, 2,true),
+		Library(3, "Head First Java", "Берт Бэйтс", 1, 2,true)
 	};
 
-	for (int i = 0; i < N; i++)
-		cout << book[i];
-	cout << cheak_name(book) << endl;
-
-	cout << "--------------------------------------" << endl;
-	cout << cheak_availability(book) << endl;
-	for (int i = 0; i < N; i++)
-		cout << book[i];
+	menu(book);
 	
-	cout << "--------------------------------------" << endl;
-	take(book);
-	for (int i = 0; i < N; i++)
-		cout << book[i];
-
 	return 0;
 }
