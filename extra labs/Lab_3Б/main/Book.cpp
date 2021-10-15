@@ -66,6 +66,7 @@ int menu(Library * book) {
 	int choice;
 	int num;
 	string NAME;
+	
 	while (true) {
 		
 		i = 0;
@@ -88,8 +89,8 @@ int menu(Library * book) {
 			case 2:
 				system("cls");
 				cout << "¬ведите название книги" << endl;
+				cin.get();
 				getline(cin, NAME);
-				//getline(cin, NAME);
 				cout << check_name(book, NAME) << endl;
 				break;
 			case 3:
