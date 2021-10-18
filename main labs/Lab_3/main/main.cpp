@@ -9,8 +9,7 @@ int main() {
 	cout << "D4 temp(100,200,300,400,500);\n";
 	cout << "D4 temp1(1,2,3,4,5);\n";
 	cout << "\nСледуя иерархии класса D4: \n";
-	temp.show_D4();
-	//temp1.show_D4();
+	temp.show();
 	
 	return 0;
 }

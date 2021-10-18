@@ -44,5 +44,5 @@ class D4: public D1, public D3 {
 	int f;
 public:
 	D4(int x, int y, int z, int i, int j, int g, int k): D1(y, z), D3( i, j, g, k) { f = x; }
-	void show_D4() { cout << "D4 =   " << f << "\n"; D1::show(); D3::show();}
+	void show() { cout << "D4 =   " << f << "\n"; D1::show(); D3::show();}
 };
