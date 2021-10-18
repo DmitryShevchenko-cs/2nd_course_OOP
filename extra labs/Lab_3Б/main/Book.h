@@ -20,7 +20,7 @@ public:
 };
 	
 
-class Library : protected Book {
+class Library : private Book {
 	int number;
 	bool availability;
 public:
