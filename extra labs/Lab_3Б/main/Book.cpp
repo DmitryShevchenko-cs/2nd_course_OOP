@@ -25,7 +25,7 @@ string check_name(Library* ob, string NAME) {
 
 string check_availability(Library* ob, int num) {
 
-		if (num < 3 && num > 0) {
+		if (num <= 3 && num > 0) {
 			if (ob[num - 1].availability) 
 				return "У нас есть эта книга";
 			else return "У нас нет такой книги";
@@ -82,19 +82,19 @@ int menu(Library * book) {
 
 		switch (choice) {
 			case 1: 
-				system("cls");
+				//system("cls");
 				for (int i = 0; i < N; i++)
 					cout << book[i];
 				break;
 			case 2:
-				system("cls");
+				//system("cls");
 				cout << "Введите название книги" << endl;
 				cin.get();
 				getline(cin, NAME);
 				cout << check_name(book, NAME) << endl;
 				break;
 			case 3:
-				system("cls");
+				//system("cls");
 				cout << "Введите номер книги которую хотите проверить на наличие >" ;
 				cin >> num;
 				cout << check_availability(book, num) << endl;
@@ -110,10 +110,10 @@ int menu(Library * book) {
 				getback(book, num);
 				break;
 			case 6:
-				system("cls");
+				//system("cls");
 				return 0;;
 			default:
-				system("cls");
+				//system("cls");
 				cout << "Вы ввели неверный номер, попробуйте снова..." << endl << endl;
 				break;
 
