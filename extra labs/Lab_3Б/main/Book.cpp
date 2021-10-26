@@ -30,7 +30,7 @@ string check_availability(Library* ob, int num) {
 				return "У нас есть эта книга";
 			else return "У нас нет такой книги";
 		}
-		else cout << "Вы ввели неправельный номер" << endl;
+		else cout << "Вы ввели неправильный номер" << endl;
 
 }
 
@@ -46,7 +46,7 @@ void get(Library* ob, int num) {
 				cout << "У нас нету этой книги" << endl;
 			}
 		}
-		else cout << "Вы ввели неправельный номер" << endl;
+		else cout << "Вы ввели неправильный номер" << endl;
 
 }
 
