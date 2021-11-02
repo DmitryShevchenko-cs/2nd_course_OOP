@@ -3,36 +3,40 @@
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	char ch;
-	int a[2];
-	
-	fstream fl;
-	fl.open("complex.txt", fstream::in | fstream::out);
+	char ch = ' ';
+	string str[2]{};
+
+	ifstream fl;
+	ofstream of;
+	fl.open("complex.txt");
 
 	if (fl.is_open()) {
 		int i = 0;
+
+		while (fl.get(ch)) {
+
+			if (ch == '\n')
+				i++;
 		
-		while (!fl.eof()) {
+			else if (ch > 47 && ch < 58)
+				str[i] += ch;
 
-			fl >> ch;
-			if (ch > 49 && ch < 57) {
-
-				a[i] = (int)ch;
-			}
-			i++;
+			else str[i] += ' ';
+			
 		}
-		for (int i = 0; i < 2; i++) {
-
-			fl << a[i] << '\t';
-
-		}
-
-
-
-		fl.close();
 	}
 
 	else cout << "Ошибка открытия файла" << endl;
 
+	of.open("complex.txt", fstream::app);
+	if (of.is_open()) {
+
+		of << str[0] << endl;
+		of << str[1] << endl;
+		
+	}
+
+	else cout << "Ошибка открытия файла" << endl;
+	
 
 }
