@@ -8,6 +8,7 @@ int main() {
 
 	ifstream fl;
 	ofstream of;
+
 	fl.open("complex.txt");
 
 	if (fl.is_open()) {
@@ -30,7 +31,7 @@ int main() {
 
 	of.open("complex.txt", fstream::app);
 	if (of.is_open()) {
-
+		of << endl;
 		of << str[0] << endl;
 		of << str[1] << endl;
 		
