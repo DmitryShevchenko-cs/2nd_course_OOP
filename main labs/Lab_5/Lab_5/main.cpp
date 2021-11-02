@@ -33,7 +33,7 @@ int main() {
 	if (of.is_open()) {
 		of << endl;
 		of << str[0] << endl;
-		of << str[1] << endl;
+		of << str[1];
 		
 	}
 
