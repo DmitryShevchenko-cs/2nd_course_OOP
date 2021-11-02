@@ -12,7 +12,7 @@ class table {
 
 	char* name;
 	char type;
-	int temperature;//
+	int temperature;
 	unsigned int speed;
 
 	friend void shapka();
