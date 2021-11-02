@@ -29,9 +29,9 @@ void table::get(char* a, char& b, int& c, unsigned int& d)const {
 
 void DB::add_rec(const char* a, char b, int c, unsigned int d) {
 	if (col >= 12) return;
-	else col++;
-	rows[col - 1] = new table(a, b, c, d);
-	sorted = 0;
+	rows[col] = new table(a, b, c, d);
+    col++;
+    sorted = 0;
 }
 
 void DB::del_rec() {
@@ -61,8 +61,6 @@ void DB::sort_DB() {
 
 ostream& operator<<(ostream& stream, DB& ob) {
     stream << ob.title << endl;
-    if (ob.sorted == 0) stream << "Таблица не отсортирована.\n";
-    else stream << "Таблица отсортирована.\n";
     shapka();
     if (!ob.col) stream << "Таблица пуста.";
     else {
@@ -70,6 +68,8 @@ ostream& operator<<(ostream& stream, DB& ob) {
             stream << *ob.rows[i];
         }
     }
+    if (ob.sorted == 0) stream << "Таблица не отсортирована.\n";
+    else stream << "Таблица отсортирована.\n";
     return stream;
 }
 

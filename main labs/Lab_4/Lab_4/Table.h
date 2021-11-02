@@ -33,7 +33,7 @@ class DB {
 	char title[30];
 	table* rows[12];
 	int col;
-	int sorted;
+	bool sorted;
 
 public:
 	DB(const char* q) { strcpy(title, q), col = 0; sorted = 0; }

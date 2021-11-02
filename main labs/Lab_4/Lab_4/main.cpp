@@ -7,6 +7,10 @@ int main() {
 
 	short choice = 0;
 	DB* tmp = new DB("\nБаза данных\n");
+	char* N = new(char);
+	char t;
+	unsigned tem;
+	int sp;
 
 	while (true) {
 
@@ -22,9 +26,11 @@ int main() {
 
 		case 1:
 			cout << "Вещество, Тип , Температура , Скорость: \n";
-			tmp->add_rec("Анилин", 'Ч', 20, 1656);
-			tmp->add_rec("Ртуть", 'Ч', 20, 1451);
-			tmp->add_rec("Кедровое", 'М', 29, 1406);
+			cin >> N >> t >> tem >> sp;
+			tmp->add_rec(N, t, tem, sp);
+			//tmp->add_rec("Анилин", 'Ч', 20, 1656);
+			//tmp->add_rec("Ртуть", 'Ч', 20, 1451);
+			//tmp->add_rec("Кедровое", 'М', 29, 1406);
 			break;
 
 		case 2:
@@ -51,6 +57,6 @@ int main() {
 		}
 
 	}
-
+	delete N;
 	return 0;
 }
