@@ -1,22 +1,20 @@
 #pragma once
 #include <iostream>
 #include "windows.h"
+#include <string>
 
 using namespace std;
 
-class comp{
+class animals{
 public:
+	string name;
+	int weight;
+	int age;
 	string type;
-	float chast;
-	int RAM;
-	int HDD;
-
-	friend ostream& operator <<(ostream& stream, comp& ob);
-	comp() : type("---"), chast(0.0), RAM(0), HDD(0) {};
-public:
 	
-
+	animals() : name("___"), weight(0), age(0), type("___") {};
 };
 
-void sort();
-void change(comp& o1, string& t, float& c, int& R, int& H);
+void change(animals& o1, const string& n, const int& w, const int& a, const string& t);
+void show(animals& o1);
+void sort(animals* o1);
