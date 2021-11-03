@@ -7,7 +7,7 @@ int main() {
 
 	short choice = 0;
 	DB* tmp = new DB("\nБаза данных\n");
-	char* N = new char;
+	char* N = new char[20];
 	char t;
 	unsigned tem;
 	int sp;
@@ -59,7 +59,7 @@ int main() {
 
 	}
 
-	
+	delete[] N;
 	delete tmp;
 	return 0;
 }
