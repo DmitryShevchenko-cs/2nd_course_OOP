@@ -22,6 +22,7 @@ class table {
 	
 public:
 	table() { strcpy(name, " "), type = ' ', temperature = 0; speed = 0; }
+	~table() { cout << "Удаление строки" << endl; };
 	table(const char* name, const char type, const int temperature, const unsigned int speed);
 	void set(char* n, const char t, const int tem, const unsigned int sp);
 	void get(char* a, char& b, int& c, unsigned int& d)const;
@@ -37,7 +38,7 @@ class DB {
 
 public:
 	DB(const char* q) { strcpy(title, q), col = 0; sorted = 0; }
-	~DB() { if (col) for (int i = 0; i < col; i++) delete rows[i]; }
+	~DB() { if (col) for (int i = 0; i < col; i++) delete rows[i];}
 	void add_rec(const char* a, char b, int c, unsigned int d);
 	void del_rec();
 	void sort_DB();

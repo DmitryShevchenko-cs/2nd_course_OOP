@@ -7,12 +7,12 @@ int main() {
 
 	short choice = 0;
 	DB* tmp = new DB("\nБаза данных\n");
-	char* N = new(char);
+	char* N = new char;
 	char t;
 	unsigned tem;
 	int sp;
-
-	while (true) {
+	bool b = 1;
+	while (b) {
 
 		cout << "1. Добавить запись\n";
 		cout << "2. Удалить запись\n";
@@ -48,7 +48,8 @@ int main() {
 			break;
 
 		case 5:
-			return 0;
+			b = 0;
+			break;
 		
 		default: {
 			cout << "Неверный вызов" << endl;
@@ -57,6 +58,8 @@ int main() {
 		}
 
 	}
-	delete N;
+
+	
+	delete tmp;
 	return 0;
 }
