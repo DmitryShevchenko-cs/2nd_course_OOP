@@ -39,6 +39,7 @@ class DB {
 public:
 	DB(const char* q) { strcpy(title, q), col = 0; sorted = 0; }
 	~DB() { if (col) for (int i = 0; i < col; i++) delete rows[i];}
+	int getcol() { return col; };
 	void add_rec(const char* a, char b, int c, unsigned int d);
 	void del_rec();
 	void sort_DB();

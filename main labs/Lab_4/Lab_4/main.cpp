@@ -13,7 +13,7 @@ int main() {
 	int sp;
 	bool b = 1;
 	while (b) {
-
+		cout << "в базе " << tmp->getcol() << endl;
 		cout << "1. Добавить запись\n";
 		cout << "2. Удалить запись\n";
 		cout << "3. Сортировать базу\n";
