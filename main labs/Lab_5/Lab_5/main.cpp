@@ -5,7 +5,7 @@ int main() {
 	SetConsoleOutputCP(1251);
 	char ch = ' ';
 	string str;
-	int num[10]{};
+	int num[20]{};
 	ifstream fl;
 	ofstream of;
 	int i = 0;
@@ -18,14 +18,22 @@ int main() {
 
 			if (ch != '\n') {
 
-				if (ch > 47 && ch < 58) {
+				if ((ch > 47 && ch < 58)) {
 					str += ch;
+					
 				}
 
-				else num[i] = atoi(str.c_str());
+				else if (str != "") {
+					num[i] = atoi(str.c_str()); 
+					i++;
+					str = "";
+				
+				}
+				
 			}
-			i++;
-			str = {};
+			else {
+				str = "";
+			}
 		}
 		
 	}
