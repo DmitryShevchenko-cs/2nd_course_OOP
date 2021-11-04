@@ -19,11 +19,11 @@ int main() {
 
 		switch (choice) {
 		case 1:
-			change(ob[0], "name1", 1, 1, "type1");
-			change(ob[1], "name2", 2, 2, "type2");
-			change(ob[2], "name3", 3, 3, "type3");
-			change(ob[3], "name4", 4, 4, "type4");
-			change(ob[4], "name5", 5, 5, "type5");
+			change(ob[0], "Кабан", 1, 1, "Желуди");
+			change(ob[1], "Лось", 2, 2, "Трава");
+			change(ob[2], "Лиса", 3, 3, "Мелкие животные");
+			change(ob[3], "Волк", 4, 4, "Мелкие животные");
+			change(ob[4], "Белка", 5, 5, "Грибы");
 			ex = true;
 			break;
 
@@ -38,14 +38,13 @@ int main() {
 				break;
 			}
 
-			for (int i = 0; i < 5; i++)
-				show(ob[i]);
+			show(ob);
 			break;
 
 		case 4:
 			cout << "Выход" << endl;
 			b = 0;
-
+			break;
 		default:
 			cout << "Вы ввели неверный номер" << endl;
 			break;

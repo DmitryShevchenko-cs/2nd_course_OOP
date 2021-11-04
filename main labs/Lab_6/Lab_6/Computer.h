@@ -2,6 +2,7 @@
 #include <iostream>
 #include "windows.h"
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -16,5 +17,5 @@ public:
 };
 
 void change(animals& o1, const string& n, const int& w, const int& a, const string& t);
-void show(animals& o1);
+void show(animals* o1);
 void sort(animals* o1);

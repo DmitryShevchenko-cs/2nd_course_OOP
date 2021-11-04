@@ -4,8 +4,8 @@ void sort(animals* o1) {
 
 	int i, j;
     animals temp;
-    for (i = 0; i < 7; i++)
-        for (j = i + 1; j < 7; j++)
+    for (i = 0; i < 5; i++)
+        for (j = i + 1; j < 5; j++)
             if (o1[i].name > o1[j].name) {
                 temp = o1[i];
                 o1[i] = o1[j];
@@ -21,11 +21,21 @@ void change(animals& o1, const string& name, const int& weight, const int& age, 
 	o1.type = type;
 }
 
-void show(animals& o1) {
+void show(animals* o1) {
+	cout << "                            Животное: \n";
+	cout << "----------------------------------------------------------------\n";
+	cout << "   Название вида        Вес        Возраст        Тип рациона  \n";
+	cout << "----------------------------------------------------------------\n";
 
-	cout << o1.name << '\t';
-	cout << o1.weight << '\t';
-	cout << o1.age << '\t';
-	cout << o1.type << '\t';
+	for (int i = 0; i < 5; i++) {
+
+		cout << setw(19) << o1[i].name;
+		cout << setw(11) << o1[i].weight;
+		cout << setw(15) << o1[i].age;
+		cout << setw(17) << o1[i].type;
+		cout << endl;
+
+	}
+
 	cout << endl;
 }
