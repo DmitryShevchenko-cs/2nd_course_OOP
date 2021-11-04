@@ -1,4 +1,4 @@
-#include "Computer.h"
+#include "Animals.h"
 
 int main() {
 
@@ -19,15 +19,20 @@ int main() {
 
 		switch (choice) {
 		case 1:
-			change(ob[0], "Кабан", 1, 1, "Желуди");
-			change(ob[1], "Лось", 2, 2, "Трава");
-			change(ob[2], "Лиса", 3, 3, "Мелкие животные");
-			change(ob[3], "Волк", 4, 4, "Мелкие животные");
-			change(ob[4], "Белка", 5, 5, "Грибы");
+			change(ob[0], "Кабан", 250, 5, 2);
+			change(ob[1], "Лось", 300, 20, 0);
+			change(ob[2], "Лиса", 10, 5, 2);
+			change(ob[3], "Волк", 50, 14, 1);
+			change(ob[4], "Белка", 0.33, 5, 2);
 			ex = true;
+			cout << "База добавлена" << endl;
 			break;
 
 		case 2:
+			if (!ex) {
+				cout << "База пуста" << endl;
+				break;
+			}
 
 			sort(ob);
 			break;
@@ -37,7 +42,7 @@ int main() {
 				cout << "База пуста" << endl;
 				break;
 			}
-
+			cout << "База отсортирована" << endl;
 			show(ob);
 			break;
 

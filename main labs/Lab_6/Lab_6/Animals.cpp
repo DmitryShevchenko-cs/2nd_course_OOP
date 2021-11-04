@@ -1,4 +1,4 @@
-#include "Computer.h"
+#include "Animals.h"
 
 void sort(animals* o1) {
 
@@ -13,7 +13,7 @@ void sort(animals* o1) {
             }
  }
 
-void change(animals& o1, const string& name, const int& weight, const int& age, const string& type){
+void change(animals& o1, const string& name, const float& weight, const int& age, const int& type){
 
 	o1.name = name;
 	o1.weight = weight;
@@ -29,10 +29,24 @@ void show(animals* o1) {
 
 	for (int i = 0; i < 5; i++) {
 
-		cout << setw(19) << o1[i].name;
-		cout << setw(11) << o1[i].weight;
+		cout << setw(10) << o1[i].name;
+		cout << setw(17) << o1[i].weight;
 		cout << setw(15) << o1[i].age;
-		cout << setw(17) << o1[i].type;
+
+		switch (o1[i].type) {
+		case 0:
+			cout << setw(19) << "Травоядные";
+			break;
+		case 1:
+			cout << setw(19) << "Плотоядные";
+			break;
+		case 2:
+			cout << setw(19) << "Всеядные";
+			break;
+		default:
+			cout << setw(19) << "Неопределен";
+			break;
+		}
 		cout << endl;
 
 	}
