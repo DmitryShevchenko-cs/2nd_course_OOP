@@ -5,54 +5,47 @@ int main() {
 	SetConsoleOutputCP(1251);
 	char ch = ' ';
 	string str;
-	int num[20]{};
 	ifstream fl;
 	ofstream of;
 	int i = 0;
 	fl.open("complex.txt");
+	of.open("simple.txt");
 
 	if (fl.is_open()) {
-		
 
-		while (fl.get(ch)) {
+		if (of.is_open()) {
 
-			if (ch != '\n') {
+			while (fl.get(ch)) {
 
-				if ((ch > 47 && ch < 58)) {
-					str += ch;
-					
+				if (ch != '\n') {
+
+					if ((ch > 47 && ch < 58)) {
+						str += ch;
+
+					}
+
+					if (str != "" && (ch < 47 || ch > 58)) {
+
+
+						of << str << ' ';
+						str = "";
+
+						/*num[i] = atoi(str.c_str());
+						i++;
+						str = "";*/
+
+					}
 				}
+				else of << '\n';
 
-				else if (str != "") {
-					num[i] = atoi(str.c_str()); 
-					i++;
-					str = "";
-				
-				}
-				
 			}
-			else {
-				str = "";
-			}
+			of.close();
 		}
-		
+		else cout << "ошибка открытия файла" << endl;
+		fl.close();
 	}
 
 	else cout << "Ошибка открытия файла" << endl;
-
-	for (int j = 0; j < i; j++)
-		cout << num[j] << endl;
-
-	/*of.open("simple.txt", fstream::app);
-	if (of.is_open()) {
-		of << "-----------------" << endl;
-		for (int j = 0; j < i+1; j++) {
-			of << str[j] << endl;
-		}
-		of << "-----------------" << endl;
-	}*/
-
-	//else cout << "Ошибка открытия файла" << endl;
 	
 	return 0;
 }
