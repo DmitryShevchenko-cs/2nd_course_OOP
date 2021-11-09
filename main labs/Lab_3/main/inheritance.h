@@ -43,7 +43,7 @@ public:
 class D4: public D1, public D3 {
 	int f;
 public:
-	D4(int x, int y, int z, int i, int j, int g, int k): B1(z), D1(y, z), D3( i, j, g, z) { f = x; }
+	D4(int x, int y, int z, int i, int j, int g): B1(z), D1(y, z), D3( i, j, g, z) { f = x; }
 	void show() { cout << "D4 =   " << f << "\n"; B1::show(); D1::show(); D3::show();}
 };
 
