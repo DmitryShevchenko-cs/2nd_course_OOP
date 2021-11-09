@@ -3,51 +3,47 @@
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
+
 	char ch = ' ';
 	string str;
-	ifstream fl;
-	ofstream of;
-	int i = 0;
-	fl.open("complex.txt");
-	of.open("simple.txt");
+	ifstream ifstr;
+	ofstream ofstr;
+	
+	ifstr.open("complex.txt");
+	ofstr.open("simple.txt");
 
-	if (fl.is_open()) {
+	if (ifstr.is_open()) {
 
-		if (of.is_open()) {
+		if (ofstr.is_open()) {
 
-			while (fl.get(ch)) {
+			while (ifstr.get(ch)) {
 
-				if (ch != '\n') {
+				if ((ch > 47 && ch < 58)) {
+					str += ch;
 
-					if ((ch > 47 && ch < 58)) {
-						str += ch;
-
-					}
-
-					if (str != "" && (ch < 47 || ch > 58)) {
-
-
-						of << str << ' ';
-						str = "";
-
-						/*num[i] = atoi(str.c_str());
-						i++;
-						str = "";*/
-
-					}
 				}
-				else of << '\n';
+
+				if (str != "" && (ch < 47 || ch > 58)) {
+
+
+					ofstr << str << ' ';
+					str = "";
+
+				}
+
+				if (ch == '\n') {
+					ofstr << '\n';
+				}
 
 			}
-			of.close();
+			ofstr.close();
 		}
-		else cout << "ошибка открытия файла" << endl;
-		fl.close();
+		else cout << "ошибка открытия файла на запись" << endl;
+		ifstr.close();
 	}
 
-	else cout << "Ошибка открытия файла" << endl;
+	else cout << "Ошибка открытия файла на чтение " << endl;
 	
 	return 0;
 }
 
-//нам нажно считать цифру -> добавить в строку -> приобразовать как число -> добавить в массив -> записать в файл -> перейти ко второй строке 
