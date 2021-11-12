@@ -10,21 +10,20 @@ int main() {
 
 
 	for (int i = 0; i < size; i++) {
-
-		arr[i] = rand();
+		arr[i] = rand() & 10 + 1; 
 		cout << arr[i] << '\t';
 	}
+	write(arr);
+	
+	for (int i = 0; i < size; i++) // clearing arr
+		arr[i] = 0;
+	
+	read(arr); //reading and chaning
+	cout << endl << endl;
 
-	ofstream file_of("arr");
-
-	if (!file_of.is_open())
-		cout << "error opening file to write" << endl;
-	else {
-
-		file_of.write((char*)&arr, sizeof(arr));
-
+	for (int i = 0; i < size; i++) {
+		cout << arr[i] << '\t';
 	}
-	file_of.close();
 
 	return 0;
 }
