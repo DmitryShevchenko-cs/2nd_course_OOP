@@ -18,7 +18,7 @@ int main() {
 	for (int i = 0; i < size; i++) // clearing arr
 		arr[i] = 0;
 	
-	read(arr); //reading and chaning
+	read(arr); //reading and rewrite
 	cout << endl << endl;
 
 	for (int i = 0; i < size; i++) {
