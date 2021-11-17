@@ -10,13 +10,10 @@ void RandomNum() {
 	else {
 		num = rand() %14 + 1;
 		fstr.write((char*)&num, sizeof(int));//+4
-		fstr.seekp(sizeof(int), ios::cur);//+4 
-		
 
 		//
-		fstr.seekg(-8, ios::cur);//+8
+		fstr.seekg(-4, ios::cur);//-4
 		fstr.read((char*)&num1, sizeof(int));//+4
-		fstr.seekp(sizeof(int), ios::cur);//+4
 		cout << num1 << '\t';
 
 		//
@@ -34,41 +31,37 @@ void CheakNum(int number) {
 	if (!fstr.is_open())
 		cout << "gg" << endl;
 	else {
-		fstr.seekg(number * sizeof(int));
+		fstr.seekg(4 * sizeof(int));
 		fstr.read((char*)&num, sizeof(int));
 		cout << num << endl;
 
 
-		if(num % 2 == 0)
-			for (int i = 0; i < number; i++) {
-				fstr.write((char*)&n1, sizeof(int));
-			}
-		else 
-			for (int i = 0; i < number; i++) {
-				fstr.write((char*)&n2, sizeof(int));
-			}
+		if (num % 2 == 0)
+			for (int i = 0; i < 4; i++)
+				fstr.write((char*)&n1, sizeof(int));//+4
+		else
+			for (int i = 0; i < 4; i++)
+				fstr.write((char*)&n2, sizeof(int));//+4
 	}
 	fstr.seekg(0, ios::beg);
 	fstr.close();
 
 }
 
-int ReadNum() {
+void ReadNum() {
 
 	int num;
-	fstream fstr("arr.txt", ios::binary | ios::in | ios::out);
+	fstream fstr("arr.txt", ios::binary| ios::in);
 	if (!fstr.is_open())
 		cout << "gg" << endl;
 	else {
 		
-		
 		fstr.read((char*)&num, sizeof(int));
-		fstr.seekp(sizeof(int), ios::cur);
-
+		fstr.seekg(sizeof(int), ios::cur);
+		cout << num << '\t';
 	}
 	fstr.close();
-	return num;
+	
 
 }
-
 

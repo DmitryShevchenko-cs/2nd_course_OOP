@@ -9,4 +9,4 @@ using namespace std;
 
 void RandomNum();
 void CheakNum(int number);
-int ReadNum();
+void ReadNum();
