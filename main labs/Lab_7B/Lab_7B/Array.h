@@ -4,9 +4,9 @@
 #include <stdlib.h>
 #include "windows.h"
 #include <time.h>
-#define size 10
+#define size 15
 using namespace std;
 
 void WriteNum();
-void CheakNum();
+void CheakNum(int number);
 void ReadNum();
