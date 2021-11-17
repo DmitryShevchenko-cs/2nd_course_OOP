@@ -7,6 +7,6 @@
 #define size 10
 using namespace std;
 
-void RandomNum();
-void CheakNum(int number);
+void WriteNum();
+void CheakNum();
 void ReadNum();
