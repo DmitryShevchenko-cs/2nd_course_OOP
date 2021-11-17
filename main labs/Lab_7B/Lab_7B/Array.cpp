@@ -1,44 +1,74 @@
 #include "Array.h"
 
-void write(int* arr) {
-
-	ofstream file_of("arr.txt", ios::binary);
+void RandomNum() {
+	int num,num1;
 	
-	if (!file_of.is_open())
-		cout << "error opening file for writing" << endl;
-	else 
-		file_of.write((char*)arr, size * sizeof(int));
 	
-	file_of.close();
-
-}
-
-void read(int* arr) {
-	fstream file_if;
-
-	file_if.open("arr.txt", ios::in | ios::out | ios::binary);
-
-	if (!file_if.is_open())
-		cout << "error opening file for reading" << endl;
+	fstream fstr("arr.txt", ios::binary | ios::in | ios::out);
+	if (!fstr.is_open())
+		cout << "error" << endl;
 	else {
-		for (int i = 0; i < size; i++)
-			file_if.read((char*)&arr[i], sizeof(int));
+		num = rand() %14 + 1;
+		fstr.write((char*)&num, sizeof(int));//+4
+		fstr.seekp(sizeof(int), ios::cur);//+4 
+		
 
-		cheak(arr);
+		//
+		fstr.seekg(-8, ios::cur);//+8
+		fstr.read((char*)&num1, sizeof(int));//+4
+		fstr.seekp(sizeof(int), ios::cur);//+4
+		cout << num1 << '\t';
 
-		file_if.write((char*)arr, size * sizeof(int));
+		//
 
 	}
-
-	file_if.close();
+	fstr.close();
 }
 
-void cheak(int* arr) {
+void CheakNum(int number) {
 
-	if (arr[4] % 2 == 0)
-		for (int i = 0; i < 4; i++)
-			arr[i] = 77;
-	else
-		for (int i = 0; i < 4; i++)
-			arr[i] = 88;
+	int num = 0;
+	int n1 = 77;
+	int n2 = 88;
+	fstream fstr("arr.txt", ios::binary | ios::in | ios::out);
+	if (!fstr.is_open())
+		cout << "gg" << endl;
+	else {
+		fstr.seekg(number * sizeof(int));
+		fstr.read((char*)&num, sizeof(int));
+		cout << num << endl;
+
+
+		if(num % 2 == 0)
+			for (int i = 0; i < number; i++) {
+				fstr.write((char*)&n1, sizeof(int));
+			}
+		else 
+			for (int i = 0; i < number; i++) {
+				fstr.write((char*)&n2, sizeof(int));
+			}
+	}
+	fstr.seekg(0, ios::beg);
+	fstr.close();
+
 }
+
+int ReadNum() {
+
+	int num;
+	fstream fstr("arr.txt", ios::binary | ios::in | ios::out);
+	if (!fstr.is_open())
+		cout << "gg" << endl;
+	else {
+		
+		
+		fstr.read((char*)&num, sizeof(int));
+		fstr.seekp(sizeof(int), ios::cur);
+
+	}
+	fstr.close();
+	return num;
+
+}
+
+
