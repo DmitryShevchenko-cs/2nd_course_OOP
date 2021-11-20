@@ -7,7 +7,7 @@ ostream& operator << (ostream& s, const OUTPUT& ob) {
 
 		if ((ob.str[i] < 48 || ob.str[i] > 58) && (ob.str[i] < 'À' || ob.str[i] > 'ß') && (ob.str[i] < 'A' || ob.str[i] > 'Z'))
 			s << ob.str[i];
-		else s << ' ';
+		//else s << ' ';
 
 	}
 

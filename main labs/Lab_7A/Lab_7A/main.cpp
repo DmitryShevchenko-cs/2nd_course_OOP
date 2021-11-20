@@ -14,7 +14,7 @@ int main() {
 		int j = 0;
 		for (int i = 0; i < size / 2; i++) {
 
-			ob[i] = comp(arr[j], arr[j++]);
+			ob[i] = comp(arr[j++], arr[j]);
 			j++;
 			ob[i].show();
 

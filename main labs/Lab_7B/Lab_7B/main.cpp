@@ -28,7 +28,7 @@ int main() {
 	try {
 		WriteNum();
 		ReadNum();
-		CheakNum(7);
+		CheakNum(5);
 		ReadNum();
 	}
 

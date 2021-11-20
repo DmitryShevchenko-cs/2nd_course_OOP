@@ -4,7 +4,7 @@
 #include <stdlib.h>
 #include "windows.h"
 #include <time.h>
-#define size 15
+#define size 10
 using namespace std;
 
 void WriteNum();

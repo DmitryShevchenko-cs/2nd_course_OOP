@@ -13,5 +13,5 @@ public:
 	comp(float NUM1, float NUM2) : num1(NUM1), num2(NUM2) {}
 	void show() { cout << num1 << endl << num2 << endl; }
 };
-void write(comp& ob, string path);
+void write(comp ob, string path);
 void read(float* arr, string path);

@@ -42,15 +42,19 @@ void CheakNum(int number) {
 	fil.read((char*)&num, sizeof(int));
 	cout << endl << num << endl;
 
-	fil.seekp(0);
-	if (num % 2 == 0)
+	
+	if (num % 2 == 0) {
+		fil.seekp(0);
 		for (int i = 0; i < number - 1; i++) {
 			fil.write((char*)&n1, sizeof(int));
 		}
-	else
+	}
+	else {
+		fil.seekp(number  * sizeof(int));
 		for (int i = 0; i < number - 1; i++) {
 			fil.write((char*)&n2, sizeof(int));
 		}
+	}
 
 	fil.close();
 }
