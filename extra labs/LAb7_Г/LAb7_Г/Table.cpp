@@ -16,20 +16,26 @@ table::table(const string name, char type, int temperature, unsigned int speed){
 
 }
 
-ostream& operator<<(ostream& stream, table& other) {
+//ostream& operator<<(ostream& stream, table& other) {
+//	//shapka();
+//	stream << "|" << setw(11) << other.name << "|";
+//	stream << setw(7) << other.type << "|";
+//	stream << setw(11) << other.temperature << "|";
+//	stream << setw(13) << other.speed << "|";
+//	linebuild();
+//	return stream;
+//}
+
+ostream& operator<<(ostream& stream, table& ob) {
 	//shapka();
-	stream << "|" << setw(11) << other.name << "|";
-	stream << setw(7) << other.type << "|";
-	stream << setw(11) << other.temperature << "|";
-	stream << setw(13) << other.speed << "|";
-	linebuild();
+	stream << ob.name << ob.type << ob.temperature << ob.speed;
 	return stream;
 }
 
 
-istream& operator>>(istream& stream, table& other) {
-	cout << "Вещество, Тип , Температура , Скорость: \n";
-	stream >> other.name >> other.type >> other.temperature >> other.speed;
+istream& operator>>(istream& stream, table& ob) {
+//	cout << "Вещество, Тип , Температура , Скорость: \n";
+	stream >> ob.name >> ob.type >> ob.temperature >> ob.speed;
 	return stream;
 }
 
@@ -56,8 +62,9 @@ void writeToFile(string filename, table obj){
 
 	if (!fw.is_open())
 		cout << "error" << endl;
-	else 
-		fw.write((char*)&obj, sizeof(table));
+	else
+		fw << obj;
+		//fw.write((char*)&obj, sizeof(table));
 	
 	fw.close();
 }
@@ -70,8 +77,7 @@ table readFromFile(string filename){
 	if (!fr.is_open())
 		cout << "error" << endl;
 	else {
-		fr.seekg(0);
-		fr.read((char*)&t, sizeof(table));
+		fr >> t;
 	}
 	fr.close();
 	return t;
