@@ -3,7 +3,6 @@
 #include <iostream>
 #include "windows.h"
 #include <fstream>
-#define N 3
 
 using namespace std;
 
@@ -20,15 +19,22 @@ public:
 
 };
 
-class DataFile
-{
+class DataFile{
+	//table* ob;
+	int num;
 public:
+	/*DataFile():ob(new table[num]), num(0) {};
+	DataFile(int number) :ob(new table[num]), num(number) {};*/
 
-	void DataStatus();
+	DataFile() :num(0) {}
+	DataFile(int number):num(number) {}
+	void setnum(int n) { num = n; }
+	void dataCreate(table*& data);
+	void dataStatus(table* data);
 	void writeToFile(string filename, table data);
 	void readFromFile2(string filename, table& data);
 	void writeData(string filename, table* data);
-	void readData(string filename, table* data);
+	void readData(string filename, table*& data);
 };
 
 int sizeofFile(string filename);

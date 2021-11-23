@@ -1,50 +1,78 @@
 #include "Tabl.h"
-#include "Datafile.h"
 
 int main() {
 	SetConsoleCP(1251);
 	SetConsoleOutputCP(1251);
-	string n;
-	char t;
-	int tem;
-	unsigned int sp;
+	
+	table* data = 0;
 	DataFile DF;
-	table* obj = new table[N];
-	for (int i = 0; i < N; i++)
-	{
-		cout << "Вещество, Тип , Температура , Скорость: ";
-		cin >> n;
-		cin >> t;
-		cin >> tem;
-		cin >> sp;
-		obj[i].set(n, t, tem, sp);
+	int col = 0;;
+	//system("cls");
+	int choice = 0;
+
+	while (true) {
+		
+
+		cout << "1. Создать базу" << endl;
+		cout << "2. Информация о базе" << endl;
+		cout << "3. Сохранение одной строки" << endl;
+		cout << "4. Чтение одной строки " << endl;
+		cout << "5. Сохранение всей бази" << endl;
+		cout << "6. Чтение всей бази" << endl;
+		cout << "7. Выход" << endl;
+		cout << "Введите номер поля > " << endl;
+		cin >> choice;
+
+		switch (choice) {
+
+		case 1:
+			cout << "colvostrok > ";
+			cin >> col;
+			DF.setnum(col);
+			DF.dataCreate(data);
+			break;
+		case 2:
+			DF.dataStatus(data);
+			break;
+
+		case 3:
+			DF.dataStatus(data);
+			cout << "nomerstroki > ";
+			cin >> choice;
+			if (choice > col || choice < 0)
+				cout << "error";
+			else
+				DF.writeToFile("tabl.txt", data[choice]);
+			break;
+
+		case 4:
+			DF.dataStatus(data);
+			cout << "nomerstroki > ";
+			cin >> choice;
+			if (choice > col || choice < 0)
+				cout << "error";
+			else
+				DF.readFromFile2("tabl.txt", data[choice]);
+			break;
+
+		case 5:
+			DF.writeData("tabl.txt", data);
+			break;
+
+		case 6:
+			DF.readData("tabl.txt", data);
+			break;
+
+		case 7:
+			return 1;
+
+		default:
+			cout << "Вы ввели не верный номер" << endl;
+			break;
+		}
+
 	}
-	system("cls");
-	cout << "Вещество, Тип , Температура , Скорость: \n";
-	for (int i = 0; i < N; i++)
-	{
-		cout << i << ". ";
-		obj[i].show();
-		cout << "\n";
-	}
 
-	//obj[0].writeToFile("table.txt", obj[0]);
-	//obj[2].readFromFile2("table.txt", obj[2]);
-
-
-	//cout << "Вещество, Тип , Температура , Скорость: \n";
-	//for (int i = 0; i < N; i++)
-	//{
-	//	obj[i].show();
-	//	cout << "\n";
-	//}
-
-	DF.writeData("table.txt", obj);
-	//obj[2].readData("table.txt", obj);
-	DF.readFromFile2("table.txt", obj[2]);
-	cout << "Вещество, Тип , Температура , Скорость: \n";
-	obj[2].show();
-	delete[] obj;
-	obj = 0;
+	delete[] data;
 	return 0;
 }
