@@ -14,8 +14,5 @@ public:
 	MyClass(T NUM);
 
 	void show();
-	friend ostream& operator << (ostream& os, const MyClass<T>& ob);
 	T& operator +(MyClass<T>& ob);
-
-
 };

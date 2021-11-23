@@ -26,9 +26,3 @@ T& MyClass<T>::operator + (MyClass<T>& ob) {
 	return NUM;
 }
 
-template <class T>
-ostream& operator << (ostream& os,  MyClass<T>& ob) {
-
-	os << ob.num;
-	return os;
-}
