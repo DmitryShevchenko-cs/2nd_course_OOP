@@ -26,9 +26,10 @@ void table::show()const {
 }
 
 void DataFile::dataCreate(table*& data) {
-
+	delete[] data;
+	data = new table[num];
 	if (num <= 0)
-		cout << "error";
+		throw MyException("База пустая");
 	else {
 		data = new table[num];
 		string n;
@@ -47,76 +48,89 @@ void DataFile::dataCreate(table*& data) {
 }
 
 void DataFile::dataStatus(table* data) {
-
-	cout << "Количество строк: " << num << endl;
-	for (int i = 0; i < num; i++)
-		data[i].show();
-	cout << endl;
-
+	if (num <= 0)
+		throw MyException("База пустая");
+	else {
+		cout << "Количество строк: " << num << endl;
+		for (int i = 0; i < num; i++) {
+			cout << i + 1 << ". ";
+			data[i].show();
+		}
+		cout << endl;
+	}
+	
 }
 
-void DataFile::writeToFile(string filename, table data) { //начало конец?
-
-	fstream fil(filename, ios::out | ios::app);
-
-	if (!fil.is_open())
-		cout << "error";
+void DataFile::writeToFile(string filename, table data) { 
+	if (num <= 0)
+		throw MyException("База пустая");
 	else {
+		fstream fil(filename, ios::out | ios::app);
 
-		fil.write((char*)&data, sizeof(table));
+		if (!fil.is_open())
+			throw("Ошибка открытия файла на запись одной строки");
+		else {
 
+			fil.write((char*)&data, sizeof(table));
+			cout << "Строка записана" << endl;
+		}
+		fil.close();
 	}
-	fil.close();
 
 }
 
 void DataFile::readFromFile2(string filename, table& data) {
 
-	int choice;
-	cout << sizeofFile(filename) << " - кол-во строк" << endl;
-	cout << "Введите номер строки ";
-	cin >> choice;
+		int choice;
+		cout << sizeofFile(filename) << " - кол-во строк" << endl;
+		cout << "Введите номер строки для чтения";
+		cin >> choice;
 
-	fstream fil(filename, ios::in);
+		fstream fil(filename, ios::in);
 
-	if (!fil.is_open())
-		cout << "error";
-	else {
-		fil.seekg((choice * sizeof(table)), ios::beg);
-		fil.read((char*)&data, sizeof(table));
+		if (!fil.is_open())
+				throw MyException("Ошибка открытия файла на чтуние одной строки");
+		else {
+			fil.seekg(((choice - 1) * sizeof(table)), ios::beg);
+			fil.read((char*)&data, sizeof(table));
 
-	}
-	fil.close();
-
+		}
+		fil.close();
+	
 }
 
 void DataFile::writeData(string filename, table* data) {
-
-	fstream fil(filename, ios::out);
-
-	if (!fil.is_open())
-		cout << "error";
+	if (num <= 0)
+		throw MyException("База пустая");
 	else {
-		for (int i = 0; i < num; i++)
-			fil.write((char*)&data[i], sizeof(table));
-
+		fstream fil(filename, ios::out);
+		if (!fil.is_open())
+			throw MyException("Ошибка открытия файла на запись всей базы");
+		else {
+			
+			fil.write((char*)data, sizeof(table));
+			cout << "База записана" << endl;
+		}
+		fil.close();
 	}
-	fil.close();
 
 }
 
 void DataFile::readData(string filename, table*& data) {
 
 	int size = sizeofFile(filename);
+	delete[] data;
 	data = new table[size];
+	num = size;
 	fstream fil(filename, ios::in);
 
 	if (!fil.is_open())
-		cout << "error";
+		throw MyException("Ошибка открытия файла на чтение всей базы");
 	else {
-		for (int i = 0; i < sizeofFile(filename); i++)
-			fil.read((char*)&data[i], sizeof(table));
+		
+		fil.read((char*)data, sizeof(table));
 		num = sizeofFile(filename);
+		cout << "База считана" << endl;
 	}
 	fil.close();
 	

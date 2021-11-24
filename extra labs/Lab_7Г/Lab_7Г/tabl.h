@@ -20,14 +20,14 @@ public:
 };
 
 class DataFile{
-	//table* ob;
+	
 	int num;
 public:
-	/*DataFile():ob(new table[num]), num(0) {};
-	DataFile(int number) :ob(new table[num]), num(number) {};*/
+
 
 	DataFile() :num(0) {}
 	DataFile(int number):num(number) {}
+	int getnum() { return num; }
 	void setnum(int n) { num = n; }
 	void dataCreate(table*& data);
 	void dataStatus(table* data);
@@ -38,3 +38,10 @@ public:
 };
 
 int sizeofFile(string filename);
+
+class MyException {
+	string errMsg;
+public:
+	MyException(string str) :errMsg(str) {};
+	string what() { return errMsg; }
+};
