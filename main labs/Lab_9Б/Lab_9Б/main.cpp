@@ -2,9 +2,9 @@
 
 
 int main() {
-	//SetConsoleCP(1251);
-	//SetConsoleOutputCP(1251);
-	setlocale(1251, "rus");
+	SetConsoleCP(1251);
+	SetConsoleOutputCP(1251);
+//setlocale(1251, "rus");
 	string str;
 	char l;
 	multimap<name, number> myMap;
