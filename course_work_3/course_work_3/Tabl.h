@@ -1,6 +1,5 @@
 #pragma once
 #include "Sport.h"
-#include <map>
 
 namespace coursework3 {
 
@@ -40,13 +39,12 @@ namespace coursework3 {
 	private: System::Windows::Forms::Button^ button1;
 	private: System::Windows::Forms::Button^ button2;
 	private: System::Windows::Forms::ListBox^ Names;
-	private: System::Windows::Forms::TextBox^ textBox4;
-	private: System::Windows::Forms::TextBox^ textBox3;
-	private: System::Windows::Forms::TextBox^ textBox2;
-	private: System::Windows::Forms::TextBox^ textBox1;
+	private: System::Windows::Forms::TextBox^ DataBox;
+	private: System::Windows::Forms::TextBox^ TypeBox;
+	private: System::Windows::Forms::TextBox^ teamBox;
+	private: System::Windows::Forms::TextBox^ countryBox;
+
 	private: System::Windows::Forms::Button^ search;
-
-
 
 	protected:
 
@@ -64,10 +62,10 @@ namespace coursework3 {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
-			this->textBox4 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox3 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox2 = (gcnew System::Windows::Forms::TextBox());
-			this->textBox1 = (gcnew System::Windows::Forms::TextBox());
+			this->DataBox = (gcnew System::Windows::Forms::TextBox());
+			this->TypeBox = (gcnew System::Windows::Forms::TextBox());
+			this->teamBox = (gcnew System::Windows::Forms::TextBox());
+			this->countryBox = (gcnew System::Windows::Forms::TextBox());
 			this->Names = (gcnew System::Windows::Forms::ListBox());
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
@@ -78,10 +76,10 @@ namespace coursework3 {
 			// groupBox1
 			// 
 			this->groupBox1->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->groupBox1->Controls->Add(this->textBox4);
-			this->groupBox1->Controls->Add(this->textBox3);
-			this->groupBox1->Controls->Add(this->textBox2);
-			this->groupBox1->Controls->Add(this->textBox1);
+			this->groupBox1->Controls->Add(this->DataBox);
+			this->groupBox1->Controls->Add(this->TypeBox);
+			this->groupBox1->Controls->Add(this->teamBox);
+			this->groupBox1->Controls->Add(this->countryBox);
 			this->groupBox1->Controls->Add(this->Names);
 			this->groupBox1->ForeColor = System::Drawing::Color::Black;
 			this->groupBox1->Location = System::Drawing::Point(2, 5);
@@ -92,48 +90,47 @@ namespace coursework3 {
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Информация";
-			this->groupBox1->Enter += gcnew System::EventHandler(this, &Tabl::groupBox1_Enter);
 			// 
-			// textBox4
+			// DataBox
 			// 
-			this->textBox4->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->DataBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox4->Location = System::Drawing::Point(138, 30);
-			this->textBox4->Margin = System::Windows::Forms::Padding(2);
-			this->textBox4->Name = L"textBox4";
-			this->textBox4->Size = System::Drawing::Size(100, 23);
-			this->textBox4->TabIndex = 1;
+			this->DataBox->Location = System::Drawing::Point(138, 30);
+			this->DataBox->Margin = System::Windows::Forms::Padding(2);
+			this->DataBox->Name = L"DataBox";
+			this->DataBox->Size = System::Drawing::Size(100, 23);
+			this->DataBox->TabIndex = 1;
+			this->DataBox->TextChanged += gcnew System::EventHandler(this, &Tabl::DataBox_TextChanged);
 			// 
-			// textBox3
+			// TypeBox
 			// 
-			this->textBox3->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->TypeBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox3->Location = System::Drawing::Point(138, 66);
-			this->textBox3->Margin = System::Windows::Forms::Padding(2);
-			this->textBox3->Name = L"textBox3";
-			this->textBox3->Size = System::Drawing::Size(100, 23);
-			this->textBox3->TabIndex = 1;
+			this->TypeBox->Location = System::Drawing::Point(138, 66);
+			this->TypeBox->Margin = System::Windows::Forms::Padding(2);
+			this->TypeBox->Name = L"TypeBox";
+			this->TypeBox->Size = System::Drawing::Size(100, 23);
+			this->TypeBox->TabIndex = 1;
 			// 
-			// textBox2
+			// teamBox
 			// 
-			this->textBox2->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->teamBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox2->Location = System::Drawing::Point(138, 104);
-			this->textBox2->Margin = System::Windows::Forms::Padding(2);
-			this->textBox2->Name = L"textBox2";
-			this->textBox2->Size = System::Drawing::Size(100, 23);
-			this->textBox2->TabIndex = 1;
+			this->teamBox->Location = System::Drawing::Point(138, 104);
+			this->teamBox->Margin = System::Windows::Forms::Padding(2);
+			this->teamBox->Name = L"teamBox";
+			this->teamBox->Size = System::Drawing::Size(100, 23);
+			this->teamBox->TabIndex = 1;
 			// 
-			// textBox1
+			// countryBox
 			// 
-			this->textBox1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->countryBox->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->textBox1->Location = System::Drawing::Point(138, 143);
-			this->textBox1->Margin = System::Windows::Forms::Padding(2);
-			this->textBox1->Name = L"textBox1";
-			this->textBox1->Size = System::Drawing::Size(100, 23);
-			this->textBox1->TabIndex = 1;
-			this->textBox1->TextChanged += gcnew System::EventHandler(this, &Tabl::textBox1_TextChanged);
+			this->countryBox->Location = System::Drawing::Point(138, 143);
+			this->countryBox->Margin = System::Windows::Forms::Padding(2);
+			this->countryBox->Name = L"countryBox";
+			this->countryBox->Size = System::Drawing::Size(100, 23);
+			this->countryBox->TabIndex = 1;
 			// 
 			// Names
 			// 
@@ -142,7 +139,7 @@ namespace coursework3 {
 				L"Шевченко", L"Брюх", L"Колобылин", L"Бабенко", L"Алексеев",
 					L"Гура", L"Чирин", L""
 			});
-			this->Names->Location = System::Drawing::Point(4, 30);
+			this->Names->Location = System::Drawing::Point(9, 30);
 			this->Names->Margin = System::Windows::Forms::Padding(2);
 			this->Names->Name = L"Names";
 			this->Names->Size = System::Drawing::Size(115, 355);
@@ -192,22 +189,17 @@ namespace coursework3 {
 			this->Name = L"Tabl";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Sport";
-			this->Load += gcnew System::EventHandler(this, &Tabl::Tabl_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-	
-	private: System::Void Tabl_Load(System::Object^ sender, System::EventArgs^ e) {
-	}
-	private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 		
-	}
-	
-	private: System::Void textBox1_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-	
-	}
-};
+		DATA sp = { "Шевченко", "16.07.2003", "Программ", "ХПИ", "Украина" };
+
+		private: System::Void DataBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+			DataBox->Text = Convert::ToString(sp.getData());
+		}
+	};
 }

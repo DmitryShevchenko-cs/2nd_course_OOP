@@ -28,9 +28,8 @@ System::String^ Sport::getData() {
 
 /////////////// DATA
 
-DATA::DATA(System::String^ Name, System::String^ Data, System::String^ Type, System::String^ Team, System::String^ Country) {
-	this->name = Name;
-	this->data = Data;
+DATA::DATA(System::String^ Name, System::String^ Data, 
+	System::String^ Type, System::String^ Team, System::String^ Country) : Sport(Name, Data) {
 	this->type = Type;
 	this->team = Team;
 	this->country = Country;

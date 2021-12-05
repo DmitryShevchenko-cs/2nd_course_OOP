@@ -2,7 +2,7 @@
 
 ref class Sport
 {
-protected:
+private:
 	System::String^ name;
 	System::String^ data;
 public:
