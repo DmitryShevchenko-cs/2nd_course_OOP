@@ -1,28 +1,21 @@
 #pragma once
 
-ref class Sport
-{
-private:
-	System::String^ name;
-	System::String^ data;
-public:
-	Sport();
-	Sport(System::String^ Name, System::String^ Data);
-	void Set(System::String^ Name, System::String^ Data);
-	void setName(System::String^ Name);
-	void setData(System::String^ Data);
-	
-	System::String^ getName();
-	System::String^ getData();
-};
+//ref class DATA2{
+//private:
+//
+//public:
+//
+//
+//};
 
-ref class DATA : public Sport {
+
+ref class DATA {
 private:
 	System::String^ type;
 	System::String^ team;
 	System::String^ country;
 public:
-	DATA(System::String^ Name, System::String^ Data, System::String^ Type, System::String^ Team, System::String^ Country);
+	DATA(System::String^ Type, System::String^ Team, System::String^ Country);
 	void setType(System::String^ Type);
 	void setTeam(System::String^ Team);
 	void setCountry(System::String^ country);
@@ -32,12 +25,16 @@ public:
 	System::String^ getCountry();
 };
 
+ref class SPORT : public DATA {
+private:
+	System::String^ name;
+	System::String^ data_bd;
+public:
+	SPORT(System::String^ Name, System::String^ Data_bd, System::String^ Type, System::String^ Team, System::String^ Country);
+	void Set(System::String^ Name, System::String^ Data_bd);
+	void setName(System::String^ Name);
+	void setData(System::String^ Data_bd);
+	System::String^ getName();
+	System::String^ getData();
+};
 
-
-//ref class DATA2 : public DATA{
-//private:
-//
-//public:
-//
-//
-//};

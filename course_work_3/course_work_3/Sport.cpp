@@ -1,35 +1,7 @@
 #include "Sport.h"
-/////////////// Sport
-Sport::Sport() {
-	this->name = "___";
-	this->data = "___";
-}
-Sport::Sport(System::String^ Name, System::String^ Data) {
-	this->name = Name;
-	this->data = Data;
-}
-void Sport::Set(System::String^ Name, System::String^ Data) {
-	this->name = Name;
-	this->data = Data;
-}
-void Sport::setName(System::String^ Name) {
-	this->name = Name;
-}
-
-void Sport::setData(System::String^ Data) {
-	this->data = Data;
-}
-System::String^ Sport::getName() {
-	return name;
-}
-System::String^ Sport::getData() {
-	return data;
-}
-
 /////////////// DATA
 
-DATA::DATA(System::String^ Name, System::String^ Data, 
-	System::String^ Type, System::String^ Team, System::String^ Country) : Sport(Name, Data) {
+DATA::DATA(	System::String^ Type, System::String^ Team, System::String^ Country) {
 	this->type = Type;
 	this->team = Team;
 	this->country = Country;
@@ -54,3 +26,30 @@ System::String^ DATA::getTeam() {
 System::String^ DATA::getCountry() {
 	return country;
 }
+
+/////////////// SPORT
+
+SPORT::SPORT(System::String^ Name, System::String^ Data_bd,
+	System::String^ Type, System::String^ Team, System::String^ Country) : DATA(Type, Team, Country) {
+	this->name = Name;
+	this->data_bd = Data_bd;
+}
+
+void SPORT::Set(System::String^ Name, System::String^ Data_bd) {
+	this->name = Name;
+	this->data_bd = Data_bd;
+}
+void SPORT::setName(System::String^ Name) {
+	this->name = Name;
+}
+
+void SPORT::setData(System::String^ Data_bd) {
+	this->data_bd = Data_bd;
+}
+System::String^ SPORT::getName() {
+	return name;
+}
+System::String^ SPORT::getData() {
+	return data_bd;
+}
+
