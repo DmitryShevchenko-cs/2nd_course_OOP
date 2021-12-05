@@ -37,4 +37,3 @@ public:
 	System::String^ getName();
 	System::String^ getData();
 };
-

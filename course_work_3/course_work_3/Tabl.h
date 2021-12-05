@@ -6,7 +6,7 @@
 #include <array>
 
 
-void WriteInFile(SPORT^ ob);
+void WriteInFile();
 
 namespace coursework3 {
 	
@@ -43,29 +43,36 @@ namespace coursework3 {
 			}
 		}
 	private: System::Windows::Forms::GroupBox^ groupBox1;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::Button^ addButton;
+
 
 	private: System::Windows::Forms::ListBox^ Names;
 	private: System::Windows::Forms::TextBox^ DataBox;
 	private: System::Windows::Forms::TextBox^ TypeBox;
-	private: System::Windows::Forms::TextBox^ teamBox;
-	private: System::Windows::Forms::TextBox^ countryBox;
+	private: System::Windows::Forms::TextBox^ TeamBox;
+	private: System::Windows::Forms::TextBox^ CountryBox;
 
-	private: System::Windows::Forms::Button^ search;
+
+	private: System::Windows::Forms::Button^ searchButton;
+
+
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ label5;
 	private: System::Windows::Forms::Label^ label4;
-	private: System::Windows::Forms::Button^ button2;
-	private: System::Windows::Forms::Button^ button3;
+	private: System::Windows::Forms::Button^ saveButton;
+
+	private: System::Windows::Forms::Button^ delButton;
+
+	private: System::Windows::Forms::Button^ readButton;
+
 
 	protected:
 
 	private:
-		/// <summary>
-		/// Обязательная переменная конструктора.
-		/// </summary>
+		array< SPORT^ >^ SP = gcnew array< SPORT^ >(5);
+		
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -83,13 +90,14 @@ namespace coursework3 {
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->DataBox = (gcnew System::Windows::Forms::TextBox());
 			this->TypeBox = (gcnew System::Windows::Forms::TextBox());
-			this->teamBox = (gcnew System::Windows::Forms::TextBox());
-			this->countryBox = (gcnew System::Windows::Forms::TextBox());
+			this->TeamBox = (gcnew System::Windows::Forms::TextBox());
+			this->CountryBox = (gcnew System::Windows::Forms::TextBox());
 			this->Names = (gcnew System::Windows::Forms::ListBox());
-			this->button1 = (gcnew System::Windows::Forms::Button());
-			this->search = (gcnew System::Windows::Forms::Button());
-			this->button2 = (gcnew System::Windows::Forms::Button());
-			this->button3 = (gcnew System::Windows::Forms::Button());
+			this->addButton = (gcnew System::Windows::Forms::Button());
+			this->searchButton = (gcnew System::Windows::Forms::Button());
+			this->saveButton = (gcnew System::Windows::Forms::Button());
+			this->delButton = (gcnew System::Windows::Forms::Button());
+			this->readButton = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -103,8 +111,8 @@ namespace coursework3 {
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->DataBox);
 			this->groupBox1->Controls->Add(this->TypeBox);
-			this->groupBox1->Controls->Add(this->teamBox);
-			this->groupBox1->Controls->Add(this->countryBox);
+			this->groupBox1->Controls->Add(this->TeamBox);
+			this->groupBox1->Controls->Add(this->CountryBox);
 			this->groupBox1->Controls->Add(this->Names);
 			this->groupBox1->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
@@ -182,7 +190,6 @@ namespace coursework3 {
 			this->DataBox->Name = L"DataBox";
 			this->DataBox->Size = System::Drawing::Size(178, 25);
 			this->DataBox->TabIndex = 1;
-			this->DataBox->TextChanged += gcnew System::EventHandler(this, &Tabl::DataBox_TextChanged);
 			// 
 			// TypeBox
 			// 
@@ -194,25 +201,25 @@ namespace coursework3 {
 			this->TypeBox->Size = System::Drawing::Size(178, 25);
 			this->TypeBox->TabIndex = 1;
 			// 
-			// teamBox
+			// TeamBox
 			// 
-			this->teamBox->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->TeamBox->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->teamBox->Location = System::Drawing::Point(220, 213);
-			this->teamBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->teamBox->Name = L"teamBox";
-			this->teamBox->Size = System::Drawing::Size(178, 25);
-			this->teamBox->TabIndex = 1;
+			this->TeamBox->Location = System::Drawing::Point(220, 213);
+			this->TeamBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->TeamBox->Name = L"TeamBox";
+			this->TeamBox->Size = System::Drawing::Size(178, 25);
+			this->TeamBox->TabIndex = 1;
 			// 
-			// countryBox
+			// CountryBox
 			// 
-			this->countryBox->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->CountryBox->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->countryBox->Location = System::Drawing::Point(220, 282);
-			this->countryBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->countryBox->Name = L"countryBox";
-			this->countryBox->Size = System::Drawing::Size(178, 25);
-			this->countryBox->TabIndex = 1;
+			this->CountryBox->Location = System::Drawing::Point(220, 282);
+			this->CountryBox->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->CountryBox->Name = L"CountryBox";
+			this->CountryBox->Size = System::Drawing::Size(178, 25);
+			this->CountryBox->TabIndex = 1;
 			// 
 			// Names
 			// 
@@ -220,96 +227,122 @@ namespace coursework3 {
 				static_cast<System::Byte>(204)));
 			this->Names->FormattingEnabled = true;
 			this->Names->ItemHeight = 17;
-			this->Names->Items->AddRange(gcnew cli::array< System::Object^  >(8) {
-				L"Шевченко", L"Брюх", L"Колобылин", L"Бабенко", L"Алексеев",
-					L"Гура", L"Чирин", L""
-			});
 			this->Names->Location = System::Drawing::Point(9, 54);
 			this->Names->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Names->Name = L"Names";
 			this->Names->Size = System::Drawing::Size(152, 412);
 			this->Names->TabIndex = 0;
+			this->Names->SelectedIndexChanged += gcnew System::EventHandler(this, &Tabl::Names_SelectedIndexChanged);
 			// 
-			// button1
+			// addButton
 			// 
-			this->button1->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->addButton->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button1->Location = System::Drawing::Point(516, 405);
-			this->button1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(155, 32);
-			this->button1->TabIndex = 1;
-			this->button1->Text = L"Добавить";
-			this->button1->UseVisualStyleBackColor = true;
+			this->addButton->Location = System::Drawing::Point(516, 405);
+			this->addButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->addButton->Name = L"addButton";
+			this->addButton->Size = System::Drawing::Size(155, 32);
+			this->addButton->TabIndex = 1;
+			this->addButton->Text = L"Добавить";
+			this->addButton->UseVisualStyleBackColor = true;
 			// 
-			// search
+			// searchButton
 			// 
-			this->search->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->searchButton->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->search->Location = System::Drawing::Point(619, 340);
-			this->search->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->search->Name = L"search";
-			this->search->Size = System::Drawing::Size(155, 32);
-			this->search->TabIndex = 2;
-			this->search->Text = L"Поиск";
-			this->search->UseVisualStyleBackColor = true;
+			this->searchButton->Location = System::Drawing::Point(516, 340);
+			this->searchButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->searchButton->Name = L"searchButton";
+			this->searchButton->Size = System::Drawing::Size(155, 32);
+			this->searchButton->TabIndex = 2;
+			this->searchButton->Text = L"Поиск";
+			this->searchButton->UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// saveButton
 			// 
-			this->button2->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->saveButton->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button2->Location = System::Drawing::Point(619, 461);
-			this->button2->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button2->Name = L"button2";
-			this->button2->Size = System::Drawing::Size(155, 32);
-			this->button2->TabIndex = 2;
-			this->button2->Text = L"Сохранить";
-			this->button2->UseVisualStyleBackColor = true;
+			this->saveButton->Location = System::Drawing::Point(619, 461);
+			this->saveButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->saveButton->Name = L"saveButton";
+			this->saveButton->Size = System::Drawing::Size(155, 32);
+			this->saveButton->TabIndex = 2;
+			this->saveButton->Text = L"Сохранить";
+			this->saveButton->UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// delButton
 			// 
-			this->button3->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->delButton->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->button3->Location = System::Drawing::Point(724, 405);
-			this->button3->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->button3->Name = L"button3";
-			this->button3->Size = System::Drawing::Size(155, 32);
-			this->button3->TabIndex = 2;
-			this->button3->Text = L"Удалить";
-			this->button3->UseVisualStyleBackColor = true;
+			this->delButton->Location = System::Drawing::Point(724, 405);
+			this->delButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->delButton->Name = L"delButton";
+			this->delButton->Size = System::Drawing::Size(155, 32);
+			this->delButton->TabIndex = 2;
+			this->delButton->Text = L"Удалить";
+			this->delButton->UseVisualStyleBackColor = true;
+			// 
+			// readButton
+			// 
+			this->readButton->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->readButton->Location = System::Drawing::Point(724, 340);
+			this->readButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			this->readButton->Name = L"readButton";
+			this->readButton->Size = System::Drawing::Size(155, 32);
+			this->readButton->TabIndex = 2;
+			this->readButton->Text = L"Считать";
+			this->readButton->UseVisualStyleBackColor = true;
 			// 
 			// Tabl
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(905, 512);
-			this->Controls->Add(this->button2);
-			this->Controls->Add(this->button3);
-			this->Controls->Add(this->search);
-			this->Controls->Add(this->button1);
+			this->Controls->Add(this->saveButton);
+			this->Controls->Add(this->delButton);
+			this->Controls->Add(this->readButton);
+			this->Controls->Add(this->searchButton);
+			this->Controls->Add(this->addButton);
 			this->Controls->Add(this->groupBox1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->Name = L"Tabl";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Sport";
+			this->Load += gcnew System::EventHandler(this, &Tabl::Tabl_Load);
 			this->groupBox1->ResumeLayout(false);
 			this->groupBox1->PerformLayout();
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
-
-
-		SPORT sp{"Шевченко", "16.07.2003", "Программ", "ХПИ", "Украина"};
 		
-		//SPORT ^sp1 = gcnew SPORT ("Шевченко", "16.07.2003", "Программ", "ХПИ", "Украина");
+	
 
-		private: System::Void DataBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-			DataBox->Text = Convert::ToString(sp.getData());
-		}
+private: System::Void Tabl_Load(System::Object^ sender, System::EventArgs^ e) {
+	SP[0] = gcnew SPORT("Шевченко", "16.07.2003", "Программ", "ХПИ", "Украина");
+	SP[1] = gcnew SPORT("Алексеев", "7.08.2003", "КС", "Петахи", "Польша");
+	SP[2] = gcnew SPORT("Алексей", "11.03.2003", "Дота", "Окуни", "Укрина");
+	SP[3] = gcnew SPORT("Саньок", "22.11.2003", "Бухло", "Алкаши", "Украина");
+	SP[4] = gcnew SPORT("Игорь", "11.03.2003", "КС", "Короли", "Украина");
+	Names->Items->Insert(0, SP[0]->getName());
+	Names->Items->Insert(1, SP[1]->getName());
+	Names->Items->Insert(2, SP[2]->getName());
+	Names->Items->Insert(3, SP[3]->getName());
+	Names->Items->Insert(4, SP[4]->getName());
+}
+private: System::Void Names_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 
-	};
+	int index = Names->SelectedIndex;
+	if (index != -1) {
+		DataBox->Text = SP[index]->getData();
+		TypeBox->Text = SP[index]->getType();
+		TeamBox->Text = SP[index]->getTeam();
+		CountryBox->Text = SP[index]->getCountry();
+	}	
+}
+};
 }
 
 //private: System::Void buttonRead_Click(System::Object^ sender, System::EventArgs^ e) {
