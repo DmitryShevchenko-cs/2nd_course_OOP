@@ -26,15 +26,10 @@ namespace coursework3 {
 		Tabl(void)
 		{
 			InitializeComponent();
-			//
-			//TODO: добавьте код конструктора
-			//
+	
 		}
 
 	protected:
-		/// <summary>
-		/// Освободить все используемые ресурсы.
-		/// </summary>
 		~Tabl()
 		{
 			if (components)
@@ -53,7 +48,7 @@ namespace coursework3 {
 	private: System::Windows::Forms::TextBox^ CountryBox;
 
 
-	private: System::Windows::Forms::Button^ searchButton;
+
 
 
 	private: System::Windows::Forms::Label^ label3;
@@ -65,14 +60,17 @@ namespace coursework3 {
 
 	private: System::Windows::Forms::Button^ delButton;
 
-	private: System::Windows::Forms::Button^ readButton;
+
 
 
 	protected:
 
 	private:
 		array< SPORT^ >^ SP = gcnew array< SPORT^ >(5);
-		
+	private: System::Windows::Forms::RichTextBox^ InfoBox;
+
+	private: System::Windows::Forms::Label^ label6;
+
 		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
@@ -83,10 +81,12 @@ namespace coursework3 {
 		void InitializeComponent(void)
 		{
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			this->InfoBox = (gcnew System::Windows::Forms::RichTextBox());
 			this->label5 = (gcnew System::Windows::Forms::Label());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->DataBox = (gcnew System::Windows::Forms::TextBox());
 			this->TypeBox = (gcnew System::Windows::Forms::TextBox());
@@ -94,20 +94,20 @@ namespace coursework3 {
 			this->CountryBox = (gcnew System::Windows::Forms::TextBox());
 			this->Names = (gcnew System::Windows::Forms::ListBox());
 			this->addButton = (gcnew System::Windows::Forms::Button());
-			this->searchButton = (gcnew System::Windows::Forms::Button());
 			this->saveButton = (gcnew System::Windows::Forms::Button());
 			this->delButton = (gcnew System::Windows::Forms::Button());
-			this->readButton = (gcnew System::Windows::Forms::Button());
 			this->groupBox1->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// groupBox1
 			// 
 			this->groupBox1->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->groupBox1->Controls->Add(this->InfoBox);
 			this->groupBox1->Controls->Add(this->label5);
 			this->groupBox1->Controls->Add(this->label4);
 			this->groupBox1->Controls->Add(this->label3);
 			this->groupBox1->Controls->Add(this->label2);
+			this->groupBox1->Controls->Add(this->label6);
 			this->groupBox1->Controls->Add(this->label1);
 			this->groupBox1->Controls->Add(this->DataBox);
 			this->groupBox1->Controls->Add(this->TypeBox);
@@ -121,10 +121,19 @@ namespace coursework3 {
 			this->groupBox1->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->groupBox1->Name = L"groupBox1";
 			this->groupBox1->Padding = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->groupBox1->Size = System::Drawing::Size(484, 501);
+			this->groupBox1->Size = System::Drawing::Size(713, 501);
 			this->groupBox1->TabIndex = 0;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Информация";
+			// 
+			// InfoBox
+			// 
+			this->InfoBox->Location = System::Drawing::Point(466, 78);
+			this->InfoBox->Name = L"InfoBox";
+			this->InfoBox->Size = System::Drawing::Size(217, 388);
+			this->InfoBox->TabIndex = 3;
+			this->InfoBox->Text = L"";
+			this->InfoBox->TextChanged += gcnew System::EventHandler(this, &Tabl::InfoBox_TextChanged);
 			// 
 			// label5
 			// 
@@ -170,6 +179,17 @@ namespace coursework3 {
 			this->label2->TabIndex = 2;
 			this->label2->Text = L"Вид спорта";
 			// 
+			// label6
+			// 
+			this->label6->AutoSize = true;
+			this->label6->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(204)));
+			this->label6->Location = System::Drawing::Point(463, 54);
+			this->label6->Name = L"label6";
+			this->label6->Size = System::Drawing::Size(135, 17);
+			this->label6->TabIndex = 2;
+			this->label6->Text = L"Рекорды и заслуги";
+			// 
 			// label1
 			// 
 			this->label1->AutoSize = true;
@@ -190,6 +210,7 @@ namespace coursework3 {
 			this->DataBox->Name = L"DataBox";
 			this->DataBox->Size = System::Drawing::Size(178, 25);
 			this->DataBox->TabIndex = 1;
+			this->DataBox->TextChanged += gcnew System::EventHandler(this, &Tabl::DataBox_TextChanged);
 			// 
 			// TypeBox
 			// 
@@ -200,6 +221,7 @@ namespace coursework3 {
 			this->TypeBox->Name = L"TypeBox";
 			this->TypeBox->Size = System::Drawing::Size(178, 25);
 			this->TypeBox->TabIndex = 1;
+			this->TypeBox->TextChanged += gcnew System::EventHandler(this, &Tabl::TypeBox_TextChanged);
 			// 
 			// TeamBox
 			// 
@@ -210,6 +232,7 @@ namespace coursework3 {
 			this->TeamBox->Name = L"TeamBox";
 			this->TeamBox->Size = System::Drawing::Size(178, 25);
 			this->TeamBox->TabIndex = 1;
+			this->TeamBox->TextChanged += gcnew System::EventHandler(this, &Tabl::TeamBox_TextChanged);
 			// 
 			// CountryBox
 			// 
@@ -220,6 +243,7 @@ namespace coursework3 {
 			this->CountryBox->Name = L"CountryBox";
 			this->CountryBox->Size = System::Drawing::Size(178, 25);
 			this->CountryBox->TabIndex = 1;
+			this->CountryBox->TextChanged += gcnew System::EventHandler(this, &Tabl::CountryBox_TextChanged);
 			// 
 			// Names
 			// 
@@ -238,7 +262,7 @@ namespace coursework3 {
 			// 
 			this->addButton->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->addButton->Location = System::Drawing::Point(516, 405);
+			this->addButton->Location = System::Drawing::Point(738, 11);
 			this->addButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->addButton->Name = L"addButton";
 			this->addButton->Size = System::Drawing::Size(155, 32);
@@ -246,23 +270,11 @@ namespace coursework3 {
 			this->addButton->Text = L"Добавить";
 			this->addButton->UseVisualStyleBackColor = true;
 			// 
-			// searchButton
-			// 
-			this->searchButton->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->searchButton->Location = System::Drawing::Point(516, 340);
-			this->searchButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->searchButton->Name = L"searchButton";
-			this->searchButton->Size = System::Drawing::Size(155, 32);
-			this->searchButton->TabIndex = 2;
-			this->searchButton->Text = L"Поиск";
-			this->searchButton->UseVisualStyleBackColor = true;
-			// 
 			// saveButton
 			// 
 			this->saveButton->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->saveButton->Location = System::Drawing::Point(619, 461);
+			this->saveButton->Location = System::Drawing::Point(738, 119);
 			this->saveButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->saveButton->Name = L"saveButton";
 			this->saveButton->Size = System::Drawing::Size(155, 32);
@@ -274,25 +286,13 @@ namespace coursework3 {
 			// 
 			this->delButton->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(204)));
-			this->delButton->Location = System::Drawing::Point(724, 405);
+			this->delButton->Location = System::Drawing::Point(738, 64);
 			this->delButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
 			this->delButton->Name = L"delButton";
 			this->delButton->Size = System::Drawing::Size(155, 32);
 			this->delButton->TabIndex = 2;
 			this->delButton->Text = L"Удалить";
 			this->delButton->UseVisualStyleBackColor = true;
-			// 
-			// readButton
-			// 
-			this->readButton->Font = (gcnew System::Drawing::Font(L"Cambria", 9, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(204)));
-			this->readButton->Location = System::Drawing::Point(724, 340);
-			this->readButton->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
-			this->readButton->Name = L"readButton";
-			this->readButton->Size = System::Drawing::Size(155, 32);
-			this->readButton->TabIndex = 2;
-			this->readButton->Text = L"Считать";
-			this->readButton->UseVisualStyleBackColor = true;
 			// 
 			// Tabl
 			// 
@@ -301,8 +301,6 @@ namespace coursework3 {
 			this->ClientSize = System::Drawing::Size(905, 512);
 			this->Controls->Add(this->saveButton);
 			this->Controls->Add(this->delButton);
-			this->Controls->Add(this->readButton);
-			this->Controls->Add(this->searchButton);
 			this->Controls->Add(this->addButton);
 			this->Controls->Add(this->groupBox1);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
@@ -320,39 +318,52 @@ namespace coursework3 {
 		
 	
 
-private: System::Void Tabl_Load(System::Object^ sender, System::EventArgs^ e) {
-	SP[0] = gcnew SPORT("Шевченко", "16.07.2003", "Программ", "ХПИ", "Украина");
-	SP[1] = gcnew SPORT("Алексеев", "7.08.2003", "КС", "Петахи", "Польша");
-	SP[2] = gcnew SPORT("Алексей", "11.03.2003", "Дота", "Окуни", "Укрина");
-	SP[3] = gcnew SPORT("Саньок", "22.11.2003", "Бухло", "Алкаши", "Украина");
-	SP[4] = gcnew SPORT("Игорь", "11.03.2003", "КС", "Короли", "Украина");
-	Names->Items->Insert(0, SP[0]->getName());
-	Names->Items->Insert(1, SP[1]->getName());
-	Names->Items->Insert(2, SP[2]->getName());
-	Names->Items->Insert(3, SP[3]->getName());
-	Names->Items->Insert(4, SP[4]->getName());
-}
-private: System::Void Names_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void Tabl_Load(System::Object^ sender, System::EventArgs^ e) {
+		SP[0] = gcnew SPORT("Дмитрий", "16.07.2003", "Спорт1", "Команда1", "Старна1", "Рекорд1; \nРекорд2; \nРекорд3;");
+		SP[1] = gcnew SPORT("Алексей", "7.08.2003", "Спорт2", "Команда2", "Старна2");
+		SP[2] = gcnew SPORT("Илья", "11.03.2003", "Спорт3", "Команда3", "Старна3");
+		SP[3] = gcnew SPORT("Саньок", "22.11.2003", "Спорт4", "Команда4", "Старна4");
+		SP[4] = gcnew SPORT("Игорь", "11.03.2003", "Спорт5", "Команда5", "Старна5");
+		Names->Items->Insert(0, SP[0]->getName());
+		Names->Items->Insert(1, SP[1]->getName());
+		Names->Items->Insert(2, SP[2]->getName());
+		Names->Items->Insert(3, SP[3]->getName());
+		Names->Items->Insert(4, SP[4]->getName());
+	}
 
-	int index = Names->SelectedIndex;
-	if (index != -1) {
+	private: System::Void Names_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
+
+		int index = Names->SelectedIndex;
 		DataBox->Text = SP[index]->getData();
 		TypeBox->Text = SP[index]->getType();
 		TeamBox->Text = SP[index]->getTeam();
 		CountryBox->Text = SP[index]->getCountry();
-	}	
-}
+		InfoBox->Text = SP[index]->getInfo();
+	}
+
+	private: System::Void DataBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		int index = Names->SelectedIndex;
+		SP[index]->setData(DataBox->Text);
+
+	}
+	private: System::Void TypeBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		int index = Names->SelectedIndex;
+		SP[index]->setType(TypeBox->Text);
+	}
+	private: System::Void TeamBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		int index = Names->SelectedIndex;
+		SP[index]->setTeam(TeamBox->Text);
+	}
+	private: System::Void CountryBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		int index = Names->SelectedIndex;
+		SP[index]->setCountry(CountryBox->Text);
+	}
+	private: System::Void InfoBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+		int index = Names->SelectedIndex;
+		SP[index]->setInfo(InfoBox->Text);
+	}
 };
 }
 
-//private: System::Void buttonRead_Click(System::Object^ sender, System::EventArgs^ e) {
-//	String^ FileName = "";
-//
-//	if (openFileDialog1->ShowDialog() == Windows::Forms::DialogResult::OK)
-//		FileName = openFileDialog1->FileName;
-//	StreamReader^ file = File::OpenText(FileName);
-//	comboBox1->SelectedIndex = Convert::ToDouble(file->ReadLine());
-//	textBoxA->Text = file->ReadLine();
-//	textBoxB->Text = file->ReadLine();
-//	textBoxC->Text = file->ReadLine();
+
 
