@@ -67,10 +67,6 @@ SPORT::SPORT(System::String^ Name, System::String^ Data_bd,
 	this->data_bd = Data_bd;
 }
 
-void SPORT::Set(System::String^ Name, System::String^ Data_bd) {
-	this->name = Name;
-	this->data_bd = Data_bd;
-}
 void SPORT::setName(System::String^ Name) {
 	this->name = Name;
 }

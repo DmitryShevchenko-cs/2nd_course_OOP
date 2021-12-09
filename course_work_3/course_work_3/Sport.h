@@ -38,7 +38,6 @@ public:
 		System::String^ Type, System::String^ Team, System::String^ Country,
 		System::String^ Info); 
 	SPORT(System::String^ Name, System::String^ Data_bd, System::String^ Type, System::String^ Team, System::String^ Country);
-	void Set(System::String^ Name, System::String^ Data_bd);
 	void setName(System::String^ Name);
 	void setData(System::String^ Data_bd);
 	System::String^ getName();
