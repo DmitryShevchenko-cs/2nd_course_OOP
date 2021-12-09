@@ -4,7 +4,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <array>
-
+#include <cliext/vector>
 
 void WriteInFile();
 
@@ -66,7 +66,8 @@ namespace coursework3 {
 	protected:
 
 	private:
-		array< SPORT^ >^ SP = gcnew array< SPORT^ >(5);
+		cliext::vector<SPORT^> SP;
+		
 	private: System::Windows::Forms::RichTextBox^ InfoBox;
 
 	private: System::Windows::Forms::Label^ label6;
@@ -269,6 +270,7 @@ namespace coursework3 {
 			this->addButton->TabIndex = 1;
 			this->addButton->Text = L"Добавить";
 			this->addButton->UseVisualStyleBackColor = true;
+			this->addButton->Click += gcnew System::EventHandler(this, &Tabl::addButton_Click);
 			// 
 			// saveButton
 			// 
@@ -319,11 +321,13 @@ namespace coursework3 {
 	
 
 	private: System::Void Tabl_Load(System::Object^ sender, System::EventArgs^ e) {
-		SP[0] = gcnew SPORT("Дмитрий", "16.07.2003", "Спорт1", "Команда1", "Старна1", "Рекорд1; \nРекорд2; \nРекорд3;");
-		SP[1] = gcnew SPORT("Алексей", "7.08.2003", "Спорт2", "Команда2", "Старна2");
-		SP[2] = gcnew SPORT("Илья", "11.03.2003", "Спорт3", "Команда3", "Старна3");
-		SP[3] = gcnew SPORT("Саньок", "22.11.2003", "Спорт4", "Команда4", "Старна4");
-		SP[4] = gcnew SPORT("Игорь", "11.03.2003", "Спорт5", "Команда5", "Старна5");
+		
+		SP.push_back(gcnew SPORT("Дмитрий", "16.07.2003", "Спорт1", "Команда1", "Старна1", "Рекорд1; \nРекорд2; \nРекорд3;"));
+		SP.push_back(gcnew SPORT("Алексей", "7.08.2003", "Спорт2", "Команда2", "Старна2"));
+		SP.push_back(gcnew SPORT("Илья", "11.03.2003", "Спорт3", "Команда3", "Старна3"));
+		SP.push_back(gcnew SPORT("Саньок", "22.11.2003", "Спорт4", "Команда4", "Старна4"));
+		SP.push_back(gcnew SPORT("Игорь", "11.03.2003", "Спорт5", "Команда5", "Старна5"));
+
 		Names->Items->Insert(0, SP[0]->getName());
 		Names->Items->Insert(1, SP[1]->getName());
 		Names->Items->Insert(2, SP[2]->getName());
@@ -361,6 +365,11 @@ namespace coursework3 {
 	private: System::Void InfoBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		int index = Names->SelectedIndex;
 		SP[index]->setInfo(InfoBox->Text);
+	}
+	private: System::Void addButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		SP.push_back(gcnew SPORT("-", "", "", "", "", ""));
+		Names->Items->Insert(SP.size()-1, SP[SP.size()-1]->getName());
+		
 	}
 };
 }
