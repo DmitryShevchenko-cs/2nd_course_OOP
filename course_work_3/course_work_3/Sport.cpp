@@ -16,7 +16,7 @@ System::String^ DATA2::getInfo() {
 	if (is)
 		return info;
 	else
-		return "Нету информации";
+		return "Нема рекродів";
 }
 
 
