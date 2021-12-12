@@ -18,6 +18,7 @@ private:
 	System::String^ team;
 	System::String^ country;
 public:
+	DATA() { type = ""; team = ""; country = ""; };
 	DATA(System::String^ Type, System::String^ Team, System::String^ Country, System::String^ Info);
 	DATA(System::String^ Type, System::String^ Team, System::String^ Country);
 	void setType(System::String^ Type);
@@ -34,6 +35,7 @@ private:
 	System::String^ name;
 	System::String^ data_bd;
 public:
+	SPORT() { name = ""; data_bd = ""; }
 	SPORT(System::String^ Name, System::String^ Data_bd, 
 		System::String^ Type, System::String^ Team, System::String^ Country,
 		System::String^ Info); 

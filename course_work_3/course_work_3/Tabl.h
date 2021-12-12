@@ -9,7 +9,7 @@
 void WriteInFile();
 
 namespace coursework3 {
-	
+	using namespace System::IO;
 	using namespace System;
 	using namespace System::ComponentModel;
 	using namespace System::Collections;
@@ -17,9 +17,6 @@ namespace coursework3 {
 	using namespace System::Data;
 	using namespace System::Drawing;
 
-	/// <summary>
-	/// Сводка для Tabl
-	/// </summary>
 	public ref class Tabl : public System::Windows::Forms::Form
 	{
 	public:
@@ -38,48 +35,19 @@ namespace coursework3 {
 			}
 		}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 	protected:
 
-	private:
-		cliext::vector<SPORT^> SP;
+
 	private: System::Windows::Forms::ListBox^ Names;
 	private: System::Windows::Forms::TextBox^ CountryBox;
 	private: System::Windows::Forms::TextBox^ TeamBox;
 	private: System::Windows::Forms::TextBox^ TypeBox;
 	private: System::Windows::Forms::TextBox^ DataBox;
 	private: System::Windows::Forms::Label^ label1;
-
-
 	private: System::Windows::Forms::Label^ label7;
 	private: System::Windows::Forms::Label^ label6;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::TextBox^ NameBox;
-
 	private: System::Windows::Forms::Label^ label3;
 	private: System::Windows::Forms::Label^ label4;
 	private: System::Windows::Forms::Button^ addButton;
@@ -88,11 +56,6 @@ namespace coursework3 {
 	private: System::Windows::Forms::RichTextBox^ InfoBox;
 	private: System::Windows::Forms::Button^ saveButton;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
-
-
-
-
-
 
 
 		   System::ComponentModel::Container^ components;
@@ -305,6 +268,7 @@ namespace coursework3 {
 			   this->saveButton->TabIndex = 2;
 			   this->saveButton->Text = L"Сохранить";
 			   this->saveButton->UseVisualStyleBackColor = true;
+			   this->saveButton->Click += gcnew System::EventHandler(this, &Tabl::saveButton_Click);
 			   // 
 			   // groupBox1
 			   // 
@@ -366,14 +330,29 @@ namespace coursework3 {
 		   }
 #pragma endregion
 
-
+	private:
+		cliext::vector<SPORT^> SP;
 
 	private: System::Void Tabl_Load(System::Object^ sender, System::EventArgs^ e) {
-		SP.push_back(gcnew SPORT("Дмитрий", "16.07.2003", "Спорт1", "Команда1", "Старна1", "Рекорд1; \nРекорд2; \nРекорд3;"));
+		int i = 0;
+		StreamReader^ file = File::OpenText("data.txt");
+		while (!file->EndOfStream) {
+			
+			SP.push_back(gcnew SPORT());
+			SP[i]->setName(file->ReadLine());
+			SP[i]->setData(file->ReadLine());
+			SP[i]->setType(file->ReadLine());
+			SP[i]->setTeam(file->ReadLine());
+			SP[i]->setCountry(file->ReadLine());
+			SP[i]->setInfo(file->ReadLine());
+			i++;
+		}
+
+		/*SP.push_back(gcnew SPORT("Дмитрий", "16.07.2003", "Спорт1", "Команда1", "Старна1", "Рекорд1; Рекорд2; Рекорд3;"));
 		SP.push_back(gcnew SPORT("Алексей", "7.08.2003", "Спорт2", "Команда2", "Старна2"));
 		SP.push_back(gcnew SPORT("Илья", "11.03.2003", "Спорт3", "Команда3", "Старна3"));
 		SP.push_back(gcnew SPORT("Саньок", "22.11.2003", "Спорт4", "Команда4", "Старна4"));
-		SP.push_back(gcnew SPORT("Игорь", "11.03.2003", "Спорт5", "Команда5", "Старна5"));
+		SP.push_back(gcnew SPORT("Игорь", "11.03.2003", "Спорт5", "Команда5", "Старна5"));*/
 		for (auto i = 0; i < SP.size(); ++i)
 			Names->Items->Insert(i, SP[i]->getName());
 	}
@@ -392,7 +371,7 @@ namespace coursework3 {
 
 	private: System::Void NameBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		SP[Names->SelectedIndex]->setName(NameBox->Text);
-		//поменять имя в лист боксе
+
 	}
 	private: System::Void DataBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		int index = Names->SelectedIndex;
@@ -420,11 +399,27 @@ namespace coursework3 {
 		Names->Items->Insert(SP.size() - 1, SP[SP.size() - 1]->getName());
 	}
 	private: System::Void delButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		
-		Names->Items->RemoveAt(Names->SelectedIndex);
 		SP.erase(SP.begin() + Names->SelectedIndex);
+		Names->Items->RemoveAt(Names->SelectedIndex);
+		
 	}
-	
+
+	private: System::Void saveButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		FileStream^ fstream = gcnew FileStream("data.txt", FileMode::Append, FileAccess::Write);
+		StreamWriter^ sw = gcnew StreamWriter(fstream);
+		for (auto i = 0; i < SP.size(); ++i) {
+			sw->WriteLine(SP[i]->getName());
+			sw->WriteLine(SP[i]->getData());
+			sw->WriteLine(SP[i]->getType());
+			sw->WriteLine(SP[i]->getTeam());
+			sw->WriteLine(SP[i]->getCountry());
+			sw->WriteLine(SP[i]->getInfo());
+			//sw->WriteLine("");
+		}
+		sw->Close();
+		fstream->Close();
+	}
+
 
 
 };
