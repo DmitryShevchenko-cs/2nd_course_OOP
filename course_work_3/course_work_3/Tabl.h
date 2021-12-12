@@ -56,6 +56,7 @@ namespace coursework3 {
 	private: System::Windows::Forms::RichTextBox^ InfoBox;
 	private: System::Windows::Forms::Button^ saveButton;
 	private: System::Windows::Forms::GroupBox^ groupBox1;
+	private: System::Windows::Forms::Button^ button1;
 
 
 		   System::ComponentModel::Container^ components;
@@ -84,6 +85,7 @@ namespace coursework3 {
 			   this->InfoBox = (gcnew System::Windows::Forms::RichTextBox());
 			   this->saveButton = (gcnew System::Windows::Forms::Button());
 			   this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
+			   this->button1 = (gcnew System::Windows::Forms::Button());
 			   this->NameBox = (gcnew System::Windows::Forms::TextBox());
 			   this->groupBox1->SuspendLayout();
 			   this->SuspendLayout();
@@ -273,6 +275,7 @@ namespace coursework3 {
 			   // groupBox1
 			   // 
 			   this->groupBox1->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			   this->groupBox1->Controls->Add(this->button1);
 			   this->groupBox1->Controls->Add(this->NameBox);
 			   this->groupBox1->Controls->Add(this->saveButton);
 			   this->groupBox1->Controls->Add(this->InfoBox);
@@ -301,6 +304,16 @@ namespace coursework3 {
 			   this->groupBox1->TabIndex = 0;
 			   this->groupBox1->TabStop = false;
 			   this->groupBox1->Text = L"Информация";
+			   // 
+			   // button1
+			   // 
+			   this->button1->Location = System::Drawing::Point(331, 449);
+			   this->button1->Name = L"button1";
+			   this->button1->Size = System::Drawing::Size(155, 32);
+			   this->button1->TabIndex = 5;
+			   this->button1->Text = L"Обновить";
+			   this->button1->UseVisualStyleBackColor = true;
+			   this->button1->Click += gcnew System::EventHandler(this, &Tabl::button1_Click);
 			   // 
 			   // NameBox
 			   // 
@@ -337,7 +350,7 @@ namespace coursework3 {
 		int i = 0;
 		StreamReader^ file = File::OpenText("data.txt");
 		while (!file->EndOfStream) {
-			
+
 			SP.push_back(gcnew SPORT());
 			SP[i]->setName(file->ReadLine());
 			SP[i]->setData(file->ReadLine());
@@ -348,8 +361,6 @@ namespace coursework3 {
 			i++;
 		}
 		file->Close();
-		
-
 		/*SP.push_back(gcnew SPORT("Дмитрий", "16.07.2003", "Спорт1", "Команда1", "Старна1", "Рекорд1; Рекорд2; Рекорд3;"));
 		SP.push_back(gcnew SPORT("Алексей", "7.08.2003", "Спорт2", "Команда2", "Старна2"));
 		SP.push_back(gcnew SPORT("Илья", "11.03.2003", "Спорт3", "Команда3", "Старна3"));
@@ -362,38 +373,31 @@ namespace coursework3 {
 	private: System::Void Names_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
 		int index = Names->SelectedIndex;
 		if (index != -1) {
-			NameBox->Text = SP[Names->SelectedIndex]->getName();
-			DataBox->Text = SP[Names->SelectedIndex]->getData();
-			TypeBox->Text = SP[Names->SelectedIndex]->getType();
-			TeamBox->Text = SP[Names->SelectedIndex]->getTeam();
-			CountryBox->Text = SP[Names->SelectedIndex]->getCountry();
-			InfoBox->Text = SP[Names->SelectedIndex]->getInfo();
+			NameBox->Text = SP[index]->getName();
+			DataBox->Text = SP[index]->getData();
+			TypeBox->Text = SP[index]->getType();
+			TeamBox->Text = SP[index]->getTeam();
+			CountryBox->Text = SP[index]->getCountry();
+			InfoBox->Text = SP[index]->getInfo();
 		}
 	}
 
 	private: System::Void NameBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
 		SP[Names->SelectedIndex]->setName(NameBox->Text);
-
 	}
 	private: System::Void DataBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		int index = Names->SelectedIndex;
 		SP[Names->SelectedIndex]->setData(DataBox->Text);
-
 	}
 	private: System::Void TypeBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		int index = Names->SelectedIndex;
 		SP[Names->SelectedIndex]->setType(TypeBox->Text);
 	}
 	private: System::Void TeamBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		int index = Names->SelectedIndex;
 		SP[Names->SelectedIndex]->setTeam(TeamBox->Text);
 	}
 	private: System::Void CountryBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		int index = Names->SelectedIndex;
 		SP[Names->SelectedIndex]->setCountry(CountryBox->Text);
 	}
 	private: System::Void InfoBox_TextChanged(System::Object^ sender, System::EventArgs^ e) {
-		int index = Names->SelectedIndex;
 		SP[Names->SelectedIndex]->setInfo(InfoBox->Text);
 	}
 	private: System::Void addButton_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -403,12 +407,11 @@ namespace coursework3 {
 	private: System::Void delButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		SP.erase(SP.begin() + Names->SelectedIndex);
 		Names->Items->RemoveAt(Names->SelectedIndex);
-		
+
 	}
 
 	private: System::Void saveButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		FileStream^ fstream = gcnew FileStream("data.txt", FileMode::Open, FileAccess::Write);
-		StreamWriter^ sw = gcnew StreamWriter(fstream);
+		StreamWriter^ sw = gcnew StreamWriter("data.txt", false);
 		for (auto i = 0; i < SP.size(); ++i) {
 			sw->WriteLine(SP[i]->getName());
 			sw->WriteLine(SP[i]->getData());
@@ -416,14 +419,20 @@ namespace coursework3 {
 			sw->WriteLine(SP[i]->getTeam());
 			sw->WriteLine(SP[i]->getCountry());
 			sw->WriteLine(SP[i]->getInfo());
-			//sw->WriteLine("");
+
 		}
 		sw->Close();
-		fstream->Close();
+		MessageBox::Show(this, "Запись в файл выполнена", "Сообщение", MessageBoxButtons::OK, MessageBoxIcon::Information);
 	}
 
 
 
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		Names->Items->Clear();
+		for (auto i = 0; i < SP.size(); ++i)
+			Names->Items->Insert(i, SP[i]->getName());
+
+	}
 };
 }
 
