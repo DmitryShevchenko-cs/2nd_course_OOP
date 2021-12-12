@@ -347,6 +347,8 @@ namespace coursework3 {
 			SP[i]->setInfo(file->ReadLine());
 			i++;
 		}
+		file->Close();
+		
 
 		/*SP.push_back(gcnew SPORT("Дмитрий", "16.07.2003", "Спорт1", "Команда1", "Старна1", "Рекорд1; Рекорд2; Рекорд3;"));
 		SP.push_back(gcnew SPORT("Алексей", "7.08.2003", "Спорт2", "Команда2", "Старна2"));
@@ -405,7 +407,7 @@ namespace coursework3 {
 	}
 
 	private: System::Void saveButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		FileStream^ fstream = gcnew FileStream("data.txt", FileMode::Append, FileAccess::Write);
+		FileStream^ fstream = gcnew FileStream("data.txt", FileMode::Open, FileAccess::Write);
 		StreamWriter^ sw = gcnew StreamWriter(fstream);
 		for (auto i = 0; i < SP.size(); ++i) {
 			sw->WriteLine(SP[i]->getName());
