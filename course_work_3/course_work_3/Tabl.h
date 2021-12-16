@@ -318,13 +318,14 @@ namespace coursework3 {
 			   // 
 			   // Tabl
 			   // 
-			   this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
-			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			   this->AutoScaleDimensions = System::Drawing::SizeF(120, 120);
+			   this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Dpi;
 			   this->BackColor = System::Drawing::SystemColors::Control;
 			   this->ClientSize = System::Drawing::Size(705, 496);
 			   this->Controls->Add(this->groupBox1);
 			   this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			   this->Margin = System::Windows::Forms::Padding(3, 2, 3, 2);
+			   this->MaximizeBox = false;
 			   this->Name = L"Tabl";
 			   this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			   this->Text = L"Sport";

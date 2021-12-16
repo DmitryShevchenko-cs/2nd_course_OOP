@@ -1,18 +1,18 @@
 #pragma once
 
-ref class DATA2{
+ref class INFO {
 private:
 	bool is;
 	System::String^ info;
 public:
-	DATA2(System::String^ Info);
-	DATA2();
+	INFO(System::String^ Info);
+	INFO();
 	void setInfo(System::String^ Info);
 	System::String^ getInfo();
 };
 
 
-ref class DATA : public DATA2 {
+ref class DATA : public INFO {
 private:
 	System::String^ type;
 	System::String^ team;

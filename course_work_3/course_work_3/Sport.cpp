@@ -1,18 +1,18 @@
 #include "Sport.h"
 
 ////////////////// DATA2
-DATA2::DATA2(System::String^ Info) {
+INFO::INFO(System::String^ Info) {
 	this->info = Info;
 	is = true;
 }
-DATA2::DATA2() {
+INFO::INFO() {
 	is = false;
 }
-void DATA2::setInfo(System::String^ Info) {
+void INFO::setInfo(System::String^ Info) {
 	this->info = Info;
 	is = true;
 }
-System::String^ DATA2::getInfo() {
+System::String^ INFO::getInfo() {
 	if (is)
 		return info;
 	else
@@ -22,7 +22,7 @@ System::String^ DATA2::getInfo() {
 
 /////////////// DATA
 
-DATA::DATA(System::String^ Type, System::String^ Team, System::String^ Country, System::String^ Info) : DATA2(Info) {
+DATA::DATA(System::String^ Type, System::String^ Team, System::String^ Country, System::String^ Info) : INFO(Info) {
 	this->type = Type;
 	this->team = Team;
 	this->country = Country;
