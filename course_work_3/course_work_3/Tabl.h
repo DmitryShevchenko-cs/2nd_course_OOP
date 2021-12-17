@@ -426,7 +426,6 @@ namespace coursework3 {
 		Names->Items->Clear();
 		for (auto i = 0; i < SP.size(); ++i)
 			Names->Items->Insert(i, SP[i]->getName());
-
 	}
 };
 }
