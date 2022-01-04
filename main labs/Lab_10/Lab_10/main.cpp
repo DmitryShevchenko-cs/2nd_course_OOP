@@ -2,12 +2,11 @@
 
 int main() {
 
-	SetConsoleCP(1251);
-	SetConsoleOutputCP(1251);
+	Test_min();//тестируем
+	Test_sort();//тестируем
+	Test_sum();//тестируем
 
-	Test_min();
-	Test_sort();
-	Test_sum();
+	//если бы не прошли тест то код ниже не работал бы-
 
 	vector<int> vect_i{ -1, 10, 1 };
 	vector<float> vect_f{ 9.1, -1.2, 1.1 };
